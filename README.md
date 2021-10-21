@@ -9,16 +9,17 @@
 
 # Cifra Club App - Flutter Redesign UI 
 
-This project was developed at Next Level Week, an intense week of studies, networking, friendship, group work, accompanied by a sensational project developed by Rocketseat from the 20th to the 27th of June.
-This application is a Billet Management, containing several features, which will soon be developed and explained.
+Esse projeto foi desevolvido como processo de redesing, partindo do projeto legado, e trazendo uma nova interface muito mais intitiva e minimalista além de funcionar com tema escuro diretamente do Smartphone
 
-## Features:
+O Cifra Club Redesign se trata de um app mobile feito em Flutter para leitura de Cifras e tablaturas, contendo recursos como o uso de Firebase Core e SignIn, Animações e Estilizações Personalizadas, entre vários outros pontos, como o uso do SharedPreferences.
+
+## Recursos:
 
 => Splash Page
 
 => Explore Page
 
-=> Eibary Page
+=> Libary Page
 
 => Profile Page
 
@@ -26,15 +27,22 @@ This application is a Billet Management, containing several features, which will
 
 => Singer Page
 
-## Libraries & Tools Used
+=> Album Page
+
+## Bibliotecas e Extensões usadas
 
 - [flutter_svg](https://pub.dev/packages/flutter_svg)
-- [google_fonts](https://pub.dev/packages/flutter_svg)
-- [Provider](https://github.com/rrousselGit/provider) (State Management)
+- [google_fonts](https://pub.dev/packages/google_fonts)
+- [firebase_core](https://pub.dev/packages/firebase_core)
+- [google_sign_in](https://pub.dev/packages/google_sign_in)
+- [google_sign_in_web](https://pub.dev/packages/google_sign_in_web)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [carousel_slider](https://pub.dev/packages/carousel_slider)
 - [expandable](https://pub.dev/packages/expandable)
 
-## Folder Structure
-Here is the core folder structure which flutter provides.
+## Estrutura da Pasta
+
+Aqui está a estrutura de pasta principal que o flutter fornece.
 
 ```
 flutter-app/
@@ -44,7 +52,8 @@ flutter-app/
 |- lib
 |- test
 ```
-Here is the folder structure we have been using in this project
+
+Aqui está a estrutura de pastas que usamos neste projeto
 
 ```
 lib/
@@ -55,4 +64,21 @@ lib/
 |- generated_plugin_registrant.dart
 |- main.dart
 ```
-##Photos
+
+## Como Usar
+ - Clone esse repositório:
+ ```
+    $ git clone https://github.com/Gabriellro/crifra_club_app_redesign
+ ```
+ - Entre no diretório:
+ ```
+    $ cd crifra_club_app_redesign
+ ```
+ - Instale as dependências:
+ ```
+    $ flutter pub get
+ ```
+ - Inicie o app: 
+ ```
+    $ flutter run
+ ```
