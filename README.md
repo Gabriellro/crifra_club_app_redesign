@@ -1,4 +1,4 @@
-![web Screenshot](assets/images/Capa.jpg)
+![web Screenshot](assets/images/github/capa.jpg)
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/Gabriellro/crifra_club_app_redesign?label=stars&message=MIT&color=000000&labelColor=F37A12" alt="Stars">
@@ -82,3 +82,17 @@ lib/
  ```
     $ flutter run
  ```
+
+## Screenshot 
+
+<p align="center">
+<img src="assets/images/github/Splash.jpg" data-canonical-src="assets/images/github/Splash.jpg" width="200" />
+<img src="assets/images/github/Login.jpg" data-canonical-src="assets/images/github/Login.jpg" width="200" />
+<img src="assets/images/github/Home.jpg" data-canonical-src="assets/images/github/Home.jpg" width="200" />
+<img src="assets/images/github/User Profile.jpg" data-canonical-src="assets/images/github/User Profile.jpg" width="200" />
+<img src="assets/images/github/Settings.jpg" data-canonical-src="assets/images/github/Settings.jpg" width="200" />
+<img src="assets/images/github/Artist Profile.jpg" data-canonical-src="assets/images/github/Artist Profile.jpg" width="200" />
+<img src="assets/images/github/Album.jpg" data-canonical-src="assets/images/github/Album.jpg" width="200" />
+
+</p>
+
