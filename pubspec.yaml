@@ -1,0 +1,35 @@
+name: crifra_club_app_redesign
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  google_fonts:
+  flutter_svg:
+  firebase_core: ^1.6.0
+  google_sign_in: ^5.1.0
+  google_sign_in_web: ^0.10.0
+  shared_preferences: ^2.0.6
+  carousel_slider: ^4.0.0
+  cached_network_image:
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg/
+  
+

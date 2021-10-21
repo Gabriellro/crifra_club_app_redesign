@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "184336539225",
+    "project_id": "cifra-club-redesign",
+    "storage_bucket": "cifra-club-redesign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184336539225:android:9daedc99c9165393a55b48",
+        "android_client_info": {
+          "package_name": "com.example.crifra_club_app_redesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184336539225-bjus8mneleg5ahoap3sj57r7e0bveq3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crifra_club_app_redesign",
+            "certificate_hash": "58ff48c614f09597346eab656bbd77f81e12a983"
+          }
+        },
+        {
+          "client_id": "184336539225-pbritmnequ8781435195qv72i85bddju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqQSY4NoblnDCYRcQI3wvIj2GrpAPTo_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184336539225-pbritmnequ8781435195qv72i85bddju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
