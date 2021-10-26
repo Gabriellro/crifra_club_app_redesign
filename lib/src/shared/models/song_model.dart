@@ -1,13 +1,15 @@
+import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
+
 class SongModel {
   final String name;
-  final bool? isfeat;
-  final String? feat;
-  final String author;
+  final SingerModel author;
+  SingerModel? feat;
+  bool? isExplicit;
 
-  const SongModel({
+  SongModel({
     required this.name,
-    this.isfeat = false,
-    this.feat = "",
+    this.isExplicit,
+    this.feat,
     required this.author,
   });
 }

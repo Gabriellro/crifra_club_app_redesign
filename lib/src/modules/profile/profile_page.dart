@@ -35,19 +35,22 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             actions: [
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    Navigator.pushNamed(
-                      context,
-                      "/settings",
-                      arguments: widget.user,
-                    );
-                  });
-                },
-                icon: Icon(
-                  Icons.tune_rounded,
-                  color: Theme.of(context).iconTheme.color,
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pushNamed(
+                        context,
+                        "/settings",
+                        arguments: widget.user,
+                      );
+                    });
+                  },
+                  icon: Icon(
+                    Icons.tune_rounded,
+                    color: Theme.of(context).iconTheme.color,
+                  ),
                 ),
               )
             ],
@@ -247,7 +250,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   SizedBox(height: 15),
-                  AlbumListWidget(
+                  AlbumList(
                     albumModels: albumModels,
                   ),
                 ],

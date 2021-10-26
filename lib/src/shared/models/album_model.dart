@@ -1,9 +1,10 @@
 import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
 
 class AlbumModel {
   final String name;
   final String albumimageUrl;
-  final String author;
+  final SingerModel author;
   final String ontap;
   final List<SongModel>? songModel;
 

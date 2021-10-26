@@ -68,67 +68,40 @@ class _ExplorePageState extends State<ExplorePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Top trending Singer",
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                        SizedBox(height: 10),
-                        GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, '/Singer'),
-                          child: Container(
-                            width: 130,
-                            height: 130,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(100),
-                                topRight: Radius.circular(100),
-                                bottomLeft: Radius.circular(24),
-                                bottomRight: Radius.circular(100),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 3,
-                                  offset: Offset(
-                                      3, 6), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(100),
-                                topRight: Radius.circular(100),
-                                bottomLeft: Radius.circular(24),
-                                bottomRight: Radius.circular(100),
-                              ),
-                              child: Container(
-                                child: Image.network(
-                                  "https://i.scdn.co/image/ab6761610000e5eb09bf4814c6585e1f69dfeef7",
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Avicci",
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Top trending Singer",
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      SizedBox(height: 10),
+                      SingerList(
+                        singers: singers,
+                      ),
+                      // SingerPicWidget(
+                      //   picSize: 130,
+                      // ),
+                      // SizedBox(height: 10),
+                      // Text(
+                      //   "Avicci",
+                      //   style: Theme.of(context).textTheme.subtitle1,
+                      // ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           SliverToBoxAdapter(
@@ -152,7 +125,7 @@ class _ExplorePageState extends State<ExplorePage> {
                   ),
                 ),
                 SizedBox(height: 15),
-                AlbumListWidget(
+                AlbumList(
                   albumModels: albumModels,
                 ),
               ],

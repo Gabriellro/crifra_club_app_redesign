@@ -1,16 +1,8 @@
-import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
 import 'package:flutter/material.dart';
 
-import 'modules/album/album_page.dart';
-import 'modules/home/home_page.dart';
-import 'modules/login/login_page.dart';
-import 'modules/profile/profile_page.dart';
-
-import 'modules/settings/settings_page.dart';
-import 'modules/singer/singer_page.dart';
-import 'modules/splash/splash_page.dart';
-
-import 'shared/models/user_model.dart';
+import 'modules/modules.dart';
+import 'shared/data/data.dart';
+import 'shared/models/models.dart';
 import 'shared/theme/theme.dart';
 
 class AppWidget extends StatelessWidget {
@@ -31,12 +23,16 @@ class AppWidget extends StatelessWidget {
         "/Profile": (context) => ProfilePage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
             ),
-        "/Singer": (_) => SingerPage(),
-        "/Album": (_) => AlbumPage(
-              albumModels: albumModels,
+        "/Singer": (context) => SingerPage(
+              singer: ModalRoute.of(context)!.settings.arguments as SingerModel,
+            ),
+        "/Album": (context) => AlbumPage(
+              albumModel:
+                  ModalRoute.of(context)!.settings.arguments as AlbumModel,
             ),
         "/settings": (context) => SettingsPage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
+              setSettingsModel: setSettingsModels,
             ),
       },
     );

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
 
-class AlbumListWidget extends StatelessWidget {
-  final List<AlbumModel> albumModels;
+class SingerList extends StatelessWidget {
+  final List<SingerModel> singers;
 
-  const AlbumListWidget({
+  const SingerList({
     Key? key,
-    required this.albumModels,
+    required this.singers,
   }) : super(key: key);
 
   @override
@@ -18,35 +19,28 @@ class AlbumListWidget extends StatelessWidget {
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           physics: BouncingScrollPhysics(),
-          itemCount: albumModels.length,
+          itemCount: singers.length,
           itemBuilder: (BuildContext context, int index) {
-            final AlbumModel albumModel = albumModels[index];
+            final SingerModel singerModel = singers[index];
             return Padding(
               padding: const EdgeInsets.only(left: 16),
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(
                   context,
-                  "/Album",
+                  "/Singer",
+                  arguments: singers[index],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 130,
-                      height: 130,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          albumModel.albumimageUrl,
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ),
+                    SingerPicWidget.large(
+                      pic: singerModel.imageUrl,
                     ),
                     SizedBox(height: 5),
                     Container(
                       width: 100,
                       child: Text(
-                        albumModel.name,
+                        singerModel.name,
                         maxLines: 2,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),

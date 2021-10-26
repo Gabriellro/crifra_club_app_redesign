@@ -8,11 +8,11 @@ import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
 
 class AlbumPage extends StatefulWidget {
-  final List<AlbumModel> albumModels;
+  final AlbumModel albumModel;
 
-  AlbumPage({
+  const AlbumPage({
     Key? key,
-    required this.albumModels,
+    required this.albumModel,
   }) : super(key: key);
 
   @override
@@ -25,7 +25,6 @@ class _AlbumPageState extends State<AlbumPage> {
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
-        clipBehavior: Clip.none,
         slivers: <Widget>[
           SliverAppBar(
             leading: IconButton(
@@ -72,76 +71,8 @@ class _AlbumPageState extends State<AlbumPage> {
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 36.0),
             sliver: SliverToBoxAdapter(
-              child: Container(
-                height: 200,
-                child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      final AlbumModel albumModel = albumModels[index];
-                      return Column(
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Theme.of(context)
-                                          .primaryColor
-                                          .withOpacity(0.2),
-                                      spreadRadius: 3,
-                                      blurRadius: 6,
-                                      offset: Offset(
-                                        3,
-                                        6,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Container(
-                                    child: Image.network(
-                                      albumModel.albumimageUrl,
-                                      fit: BoxFit.fitHeight,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 20),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "\n${albumModel.name}",
-                                      style: TextStyles.headline4,
-                                    ),
-                                    TextSpan(
-                                      text: "\nÁlbum de ",
-                                      style: TextStyles.caption,
-                                    ),
-                                    TextSpan(
-                                      text: "${albumModel.author}",
-                                      style: TextStyles.caption.copyWith(
-                                        color: AppColors.primary,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          InfoDataWidget(
-                            data: '3.9M',
-                            data1: '1.2k',
-                            data2: '96',
-                          ),
-                        ],
-                      );
-                    }),
+              child: SetAlbumWidget(
+                albumModel: widget.albumModel,
               ),
             ),
           ),

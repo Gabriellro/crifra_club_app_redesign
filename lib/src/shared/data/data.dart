@@ -1,82 +1,77 @@
+import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
+import 'package:flutter/material.dart';
+
 import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
 
 final List<SongModel> songModels = [
   SongModel(
     name: "Peace Of Mind ",
-    isfeat: true,
-    feat: 'feat. Vargas & Lagola',
-    author: 'Avicii, Vargas & Lagola',
+    author: singers[0],
+    feat: singers[3],
   ),
   SongModel(
     name: "Heaven ",
-    author: 'Avicii',
+    author: singers[0],
   ),
   SongModel(
     name: "SOS ",
-    isfeat: true,
-    feat: '(feat. Aloe Blacc)',
-    author: 'Avicii, Aloe Blacc',
+    author: singers[0],
+    feat: singers[1],
   ),
   SongModel(
     name: "Tough Love ",
-    isfeat: true,
-    feat: '(feat. Agnes, Vargas & Lago...',
-    author: 'Avicii, Agnes, Vargas & Lagola',
+    author: singers[0],
+    feat: singers[3],
   ),
   SongModel(
     name: "Bad Reputation ",
-    isfeat: true,
-    feat: '(feat. Joe Janiak)',
-    author: 'Avicii, Joe Janiak',
+    feat: singers[4],
+    author: singers[0],
   ),
   SongModel(
     name: "Ain't a Thing ",
-    isfeat: true,
-    feat: '(feat. Bonn)',
-    author: 'Avicii, Bonn',
+    author: singers[0],
+    feat: singers[5],
+    isExplicit: true,
   ),
   SongModel(
     name: 'Hold The Line ',
-    isfeat: true,
-    feat: '(feat. A R I Z O N A)',
-    author: 'Avicii, A R I Z O N A',
+    author: singers[0],
+    feat: singers[6],
   ),
   SongModel(
     name: "Freak ",
-    isfeat: true,
-    feat: '(feat. Bonn)',
-    author: 'Avicii, Bonn',
+    author: singers[0],
+    feat: singers[5],
+    isExplicit: true,
   ),
   SongModel(
     name: "Excuse Me Mr. Sir ",
-    isfeat: true,
-    feat: '(feat. Vargas & Lagola)',
-    author: 'Avicii, Vargas & Lagola',
+    author: singers[0],
+    feat: singers[3],
+    isExplicit: true,
   ),
   SongModel(
     name: "Heart Upon My Sleeve ",
-    isfeat: true,
-    feat: '(feat. Imagine...',
-    author: 'Avicii, Imagine Dragons',
+    author: singers[0],
+    feat: singers[7],
   ),
   SongModel(
     name: "Never Leave Me ",
-    isfeat: true,
-    feat: '(feat. Joe Janiak)',
-    author: 'Avicii, Joe Janiak',
+    author: singers[0],
+    feat: singers[4],
   ),
   SongModel(
     name: "Fades Away ",
-    isfeat: true,
-    feat: '(feat. Noonie Bao)',
-    author: 'Avicii, Noonie Bao',
+    author: singers[0],
+    feat: singers[8],
   ),
 ];
 
 final List<AlbumModel> albumModels = [
   AlbumModel(
     name: 'Tim',
-    author: 'Avicii',
+    author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5',
     ontap: '/Album',
@@ -84,142 +79,104 @@ final List<AlbumModel> albumModels = [
   ),
   AlbumModel(
     name: 'Stories',
-    author: 'Avicii',
+    author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b2735393c5d3cac806092a9bc468',
     ontap: '/Album',
   ),
   AlbumModel(
     name: 'True: Avicii By Avicii',
-    author: 'Avicii',
+    author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b273182fe5b5d3e3c3fcc895a3c8',
     ontap: '/Album',
   ),
   AlbumModel(
     name: 'The Days / Nights',
-    author: 'Avicii',
+    author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b2730ae4f4d42e4a09f3a29f64ad',
     ontap: '/Album',
   ),
 ];
+final List<SetSettingsModel> setSettingsModels = [
+  SetSettingsModel(
+    isIcon: true,
+    icon: Icons.notifications_rounded,
+    label: "notifications",
+  ),
+  SetSettingsModel(
+    isIcon: true,
+    icon: Icons.nights_stay_rounded,
+    label: "Dark mode",
+    isSwitch: true,
+  ),
+  SetSettingsModel.cipher(
+    label: "Instrumento",
+    sublabel: "Violão/Guitarra",
+  ),
+  SetSettingsModel.cipher(
+    label: "Versão",
+    sublabel: "Principal",
+  ),
+  SetSettingsModel.cipher(
+    label: "Capotraste",
+    sublabel: "Padrão",
+  ),
+];
 
-// final List<Story> stories = [
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[2],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[6],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1499363536502-87642509e31b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-//     isViewed: true,
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[3],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=624&q=80',
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[9],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1496950866446-3253e1470e8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-//     isViewed: true,
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[7],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1475688621402-4257c812d6db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[2],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[6],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1499363536502-87642509e31b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-//     isViewed: true,
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[3],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1497262693247-aa258f96c4f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=624&q=80',
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[9],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1496950866446-3253e1470e8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-//     isViewed: true,
-//   ),
-//   Story(
-//     ArtistProfileModel: onlineArtistProfileModels[7],
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1475688621402-4257c812d6db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
-//   ),
-// ];
-
-// final List<Post> posts = [
-//   Post(
-//     ArtistProfileModel: currentArtistProfileModel,
-//     caption: 'Check out these cool puppers',
-//     timeAgo: '58m',
-//     imageUrl: 'https://images.unsplash.com/photo-1525253086316-d0c936c814f8',
-//     likes: 1202,
-//     comments: 184,
-//     shares: 96,
-//   ),
-//   Post(
-//     ArtistProfileModel: onlineArtistProfileModels[5],
-//     caption:
-//         'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-//     timeAgo: '3hr',
-//     imageUrl: null,
-//     likes: 683,
-//     comments: 79,
-//     shares: 18,
-//   ),
-//   Post(
-//     ArtistProfileModel: onlineArtistProfileModels[4],
-//     caption: 'This is a very good boi.',
-//     timeAgo: '8hr',
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1575535468632-345892291673?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-//     likes: 894,
-//     comments: 201,
-//     shares: 27,
-//   ),
-//   Post(
-//     ArtistProfileModel: onlineArtistProfileModels[3],
-//     caption: 'Adventure 🏔',
-//     timeAgo: '15hr',
-//     imageUrl:
-//         'https://images.unsplash.com/photo-1573331519317-30b24326bb9a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-//     likes: 722,
-//     comments: 183,
-//     shares: 42,
-//   ),
-//   Post(
-//     ArtistProfileModel: onlineArtistProfileModels[0],
-//     caption:
-//         'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-//     timeAgo: '1d',
-//     imageUrl: null,
-//     likes: 482,
-//     comments: 37,
-//     shares: 9,
-//   ),
-//   Post(
-//     ArtistProfileModel: onlineArtistProfileModels[9],
-//     caption: 'A classic.',
-//     timeAgo: '1d',
-//     imageUrl:
-//         'https://images.unsplash.com/reserve/OlxPGKgRUaX0E1hg3b3X_Dumbo.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-//     likes: 1523,
-//     shares: 129,
-//     comments: 301,
-//   )
-// ];
+final List<SingerModel> singers = [
+  //0
+  SingerModel(
+    name: 'Avicii',
+    imageUrl:
+        'https://i.scdn.co/image/ab6761610000e5eb09bf4814c6585e1f69dfeef7',
+  ),
+  //1
+  SingerModel(
+    name: 'Aloe Blacc',
+    imageUrl:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+  ),
+  //2
+  SingerModel(
+    name: 'Agnes',
+    imageUrl:
+        'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
+  ),
+  //3
+  SingerModel(
+    name: 'Vargas & Lagola',
+    imageUrl:
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+  ),
+  //4
+  SingerModel(
+    name: 'Joe Janiak',
+    imageUrl:
+        'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+  ),
+  //5
+  SingerModel(
+    name: 'Bonn',
+    imageUrl:
+        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+  ),
+  //6
+  SingerModel(
+    name: 'A R I Z O N A',
+    imageUrl:
+        'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+  ),
+  //7
+  SingerModel(
+      name: 'Imagine Dragons',
+      imageUrl:
+          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+  //8
+  SingerModel(
+    name: 'Noonie Bao',
+    imageUrl:
+        'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+  ),
+];

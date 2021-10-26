@@ -1,8 +1,11 @@
 export 'social_login_button.dart';
-export 'header_widget.dart';
 export 'info_data_widget.dart';
 export 'most_wanted_widget.dart';
 export 'fab_button.dart';
 export 'song_list_widget.dart';
-export 'album_list_widget.dart';
+export 'album_list.dart';
 export 'custom_sliver_app_bar.dart';
+export 'set_settings_widget.dart';
+export 'singer_pic_widget.dart';
+export 'set_album_widget.dart';
+export 'singer_list.dart';

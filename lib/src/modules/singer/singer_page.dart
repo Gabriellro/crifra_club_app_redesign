@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-
-import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
+import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
 import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
 
+import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
+
 class SingerPage extends StatefulWidget {
-  SingerPage({Key? key}) : super(key: key);
+  final SingerModel singer;
+  SingerPage({Key? key, required this.singer}) : super(key: key);
 
   @override
   _SingerPageState createState() => _SingerPageState();
 }
 
 class _SingerPageState extends State<SingerPage> {
-  List<int> top = <int>[];
-  List<int> bottom = <int>[10];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,52 +67,22 @@ class _SingerPageState extends State<SingerPage> {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(100),
-                              topRight: Radius.circular(100),
-                              bottomLeft: Radius.circular(24),
-                              bottomRight: Radius.circular(100),
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 3,
-                                offset:
-                                    Offset(3, 6), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(100),
-                              topRight: Radius.circular(100),
-                              bottomLeft: Radius.circular(24),
-                              bottomRight: Radius.circular(100),
-                            ),
-                            child: Container(
-                              child: Image.network(
-                                "https://i.scdn.co/image/ab6761610000e5eb09bf4814c6585e1f69dfeef7",
-                                fit: BoxFit.fitHeight,
-                              ),
-                            ),
-                          ),
+                        SingerPicWidget.medium(
+                          pic: widget.singer.imageUrl,
                         ),
                         SizedBox(width: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(
-                              "\nAvicii",
-                              style: TextStyles.headline4.copyWith(
-                                color: AppColors.primary,
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Text(
+                                "\n${widget.singer.name}",
+                                style: TextStyles.headline4.copyWith(
+                                  color: AppColors.primary,
+                                ),
+                                maxLines: 2,
                               ),
                             ),
                             SizedBox(width: 5),
@@ -229,7 +198,7 @@ class _SingerPageState extends State<SingerPage> {
                       ),
                     ),
                     SizedBox(height: 15),
-                    AlbumListWidget(
+                    AlbumList(
                       albumModels: albumModels,
                     ),
                   ],

@@ -5,10 +5,7 @@ import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
 class SongListWidget extends StatelessWidget {
   final List<SongModel> songModels;
 
-  const SongListWidget({
-    Key? key,
-    required this.songModels,
-  }) : super(key: key);
+  const SongListWidget({Key? key, required this.songModels}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +25,39 @@ class SongListWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        songModel.name,
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                      SizedBox(height: 3),
                       Row(
                         children: [
-                          Text(
-                            songModel.name,
-                            style: Theme.of(context).textTheme.bodyText1,
+                          Visibility(
+                            visible:
+                                songModel.isExplicit == null ? false : true,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.explicit_rounded,
+                                  size: 18,
+                                  color: Color(0xFFF04747),
+                                ),
+                                SizedBox(width: 5),
+                              ],
+                            ),
                           ),
                           Text(
-                            "${songModel.feat}",
+                            "${songModel.author.name}",
                             style: Theme.of(context).textTheme.caption,
                           ),
+                          Visibility(
+                            visible: songModel.feat?.name != null,
+                            child: Text(
+                              ", feat ${songModel.feat?.name ?? null}",
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ),
                         ],
-                      ),
-                      Text(
-                        songModel.author,
-                        style: Theme.of(context).textTheme.caption,
                       ),
                     ],
                   ),

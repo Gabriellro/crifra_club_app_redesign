@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
 import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 
-// import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-// import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
-
 class SettingsPage extends StatefulWidget {
   final UserModel user;
-  SettingsPage({Key? key, required this.user}) : super(key: key);
+  final List<SetSettingsModel> setSettingsModel;
+  SettingsPage({
+    Key? key,
+    required this.user,
+    required this.setSettingsModel,
+  }) : super(key: key);
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -102,29 +106,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text(
                     'Configurações gerais',
                     overflow: TextOverflow.clip,
-                    style: Theme.of(context)
-                        .textTheme
-                        .caption!
-                        .copyWith(fontSize: 14, fontWeight: FontWeight.w700),
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          fontSize: 14,
+                        ),
                   ),
-                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Column(
-                      children: [
-                        SetSettingsWidget(
-                          isIcon: true,
-                          icon: Icons.notifications_rounded,
-                          label: 'Notificações',
-                        ),
-                        SetSettingsWidget(
-                          isIcon: true,
-                          icon: Icons.nights_stay_rounded,
-                          label: 'Tema escuro',
-                          isSwitch: true,
-                        ),
-                      ],
-                    ),
+                    child:
+                        SetSettingsWidget(setSettingsModels: setSettingsModels),
                   ),
                 ],
               ),
@@ -137,21 +126,21 @@ class _SettingsPageState extends State<SettingsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Configurações gerais',
+                    'Cifras',
                     overflow: TextOverflow.clip,
-                    style: Theme.of(context)
-                        .textTheme
-                        .caption!
-                        .copyWith(fontSize: 14, fontWeight: FontWeight.w700),
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          fontSize: 14,
+                        ),
                   ),
-                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: Column(
                       children: [
-                        SetSettingsWidget.cipher(
-                          label: 'Instrumento',
-                          sublabel: 'Violão/Guitarra',
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: SetSettingsWidget(
+                            setSettingsModels: setSettingsModels,
+                          ),
                         ),
                       ],
                     ),
@@ -160,96 +149,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class SetSettingsWidget extends StatefulWidget {
-  final bool? isIcon;
-  final IconData? icon;
-  final String label;
-  final bool? isSublabel;
-  final String? sublabel;
-  final bool? isSwitch;
-
-  const SetSettingsWidget({
-    Key? key,
-    this.isSwitch = false,
-    this.icon = Icons.add,
-    required this.label,
-    this.isIcon = false,
-    this.isSublabel = false,
-    this.sublabel = "",
-  }) : super(key: key);
-
-  const SetSettingsWidget.cipher({
-    Key? key,
-    this.isSwitch = false,
-    this.icon = Icons.add,
-    required this.label,
-    this.isIcon = false,
-    this.isSublabel = true,
-    required this.sublabel,
-  }) : super(key: key);
-
-  @override
-  State<SetSettingsWidget> createState() => _SetSettingsWidgetState();
-}
-
-class _SetSettingsWidgetState extends State<SetSettingsWidget> {
-  @override
-  Widget build(BuildContext context) {
-    bool isSwitched = false;
-    return GestureDetector(
-      onTap: () => setState(() => isSwitched = !isSwitched),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Visibility(
-            visible: widget.isIcon!,
-            child: CircleAvatar(
-              backgroundColor: Theme.of(context).cardColor,
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  widget.icon!,
-                  color: AppColors.primary,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(width: 15),
-          Text(
-            widget.label,
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-          Spacer(),
-          widget.isSublabel!
-              ? Text(
-                  widget.sublabel!,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption!
-                      .copyWith(fontSize: 14, fontWeight: FontWeight.w700),
-                )
-              : widget.isSwitch!
-                  ? Switch(
-                      value: isSwitched,
-                      onChanged: (value) {
-                        setState(() {
-                          isSwitched = value;
-                          print(isSwitched);
-                        });
-                      },
-                      activeTrackColor: Theme.of(context).primaryColor,
-                      activeColor: Theme.of(context).primaryColor,
-                    )
-                  : Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Theme.of(context).iconTheme.color,
-                    )
         ],
       ),
     );
