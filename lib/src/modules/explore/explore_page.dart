@@ -89,14 +89,6 @@ class _ExplorePageState extends State<ExplorePage> {
                       SingerList(
                         singers: singers,
                       ),
-                      // SingerPicWidget(
-                      //   picSize: 130,
-                      // ),
-                      // SizedBox(height: 10),
-                      // Text(
-                      //   "Avicci",
-                      //   style: Theme.of(context).textTheme.subtitle1,
-                      // ),
                       SizedBox(height: 20),
                     ],
                   ),

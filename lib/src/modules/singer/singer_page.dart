@@ -59,49 +59,48 @@ class _SingerPageState extends State<SingerPage> {
             elevation: 0,
             flexibleSpace: FlexibleSpaceBar(),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 36.0),
-            sliver: SliverToBoxAdapter(
-              child: Container(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        SingerPicWidget.medium(
-                          pic: widget.singer.imageUrl,
-                        ),
-                        SizedBox(width: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: Text(
-                                "\n${widget.singer.name}",
-                                style: TextStyles.headline4.copyWith(
-                                  color: AppColors.primary,
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 36),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SingerPicWidget.medium(
+                        pic: widget.singer.imageUrl,
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        width: 145,
+                        child: RichText(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.headline4,
+                            text: "${widget.singer.name} ",
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: "${String.fromCharCode(0xf026e)}",
+                                style: TextStyle(
+                                  fontFamily: 'MaterialIcons',
+                                  fontSize: 18.0,
+                                  color: Colors.blue,
                                 ),
-                                maxLines: 2,
-                              ),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(
-                              Icons.verified_rounded,
-                              size: 18,
-                              color: Color(0XFF0195F7),
-                            ),
-                          ],
+                              )
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                    InfoDataWidget(
-                      data: '3.9M',
-                      data1: '1.2k',
-                      data2: '96',
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  InfoDataWidget(
+                    data: '3.9M',
+                    data1: '1.2k',
+                    data2: '96',
+                  ),
+                ],
               ),
             ),
           ),
@@ -125,7 +124,7 @@ class _SingerPageState extends State<SingerPage> {
                           children: [
                             SizedBox(height: 30),
                             Text(
-                              'Top mais acessadas',
+                              "${widget.singer.name} ${Icons.verified_rounded}",
                               style: Theme.of(context).textTheme.headline6,
                             ),
                             SizedBox(height: 15),
