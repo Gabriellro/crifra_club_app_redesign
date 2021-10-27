@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/app_images.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/app_text_styles.dart';
 import 'package:crifra_club_app_redesign/src/modules/login/login_controller.dart';
 import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
 
@@ -39,15 +38,17 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           TextSpan(
                             text: "Mais de\n",
-                            style: TextStyles.headline4.copyWith(
-                              color: AppColors.primary,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.headline4?.copyWith(
+                                      color: AppColors.primary,
+                                    ),
                           ),
                           TextSpan(
                             text: "500 mil cifras",
-                            style: TextStyles.headline4.copyWith(
-                              color: AppColors.primary,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.headline4?.copyWith(
+                                      color: AppColors.primary,
+                                    ),
                           ),
                         ],
                       ),
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         "Busque a musica que você quer tocar. Sertanejo, rock, gospel e muito mais!",
                         textAlign: TextAlign.center,
-                        style: TextStyles.subtitle1,
+                        style: Theme.of(context).textTheme.subtitle1,
                         maxLines: 3,
                       ),
                     ),

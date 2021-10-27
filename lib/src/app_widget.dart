@@ -32,7 +32,8 @@ class AppWidget extends StatelessWidget {
             ),
         "/settings": (context) => SettingsPage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
-              setSettingsModel: setSettingsModels,
+              setSettingsModelsgeneral: setSettingsModelsgeneral,
+              setSettingsModelscipher: setSettingsModelscipher,
             ),
       },
     );

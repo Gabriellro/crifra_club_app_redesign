@@ -48,13 +48,13 @@ class SongListWidget extends StatelessWidget {
                           ),
                           Text(
                             "${songModel.author.name}",
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                           Visibility(
                             visible: songModel.feat?.name != null,
                             child: Text(
                               ", feat ${songModel.feat?.name ?? null}",
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.bodyText2,
                             ),
                           ),
                         ],

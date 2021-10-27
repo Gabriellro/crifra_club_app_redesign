@@ -77,21 +77,24 @@ class _ExplorePageState extends State<ExplorePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Top trending Singer",
+                        'Top trending Singer',
                         style: Theme.of(context).textTheme.headline6,
                       ),
-                      SizedBox(height: 10),
-                      SingerList(
-                        singers: singers,
-                      ),
-                      SizedBox(height: 20),
+                      Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: AppColors.primary,
+                      )
                     ],
                   ),
+                ),
+                SizedBox(height: 15),
+                SingerList(
+                  singers: singers,
                 ),
               ],
             ),

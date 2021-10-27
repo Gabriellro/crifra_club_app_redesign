@@ -90,9 +90,11 @@ class _AlbumPageState extends State<AlbumPage> {
                     width: double.infinity,
                     height: 600,
                   ),
-                  SongListWidget(
-                    songModels: songModels,
-                  ),
+                  widget.albumModel.songModel != null
+                      ? SongListWidget(
+                          songModels: songModels,
+                        )
+                      : SizedBox.shrink(),
                   Positioned(
                     top: -20,
                     right: 36,

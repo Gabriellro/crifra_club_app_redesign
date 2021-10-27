@@ -75,24 +75,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: 100,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 3,
-                                offset:
-                                    Offset(3, 6), // changes position of shadow
-                              ),
-                            ],
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: Container(
                               child: Image.network(
                                 widget.user.photoURL!,
-                                fit: BoxFit.fitHeight,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -103,30 +92,40 @@ class _ProfilePageState extends State<ProfilePage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Container(
-                              width: 110,
-                              child: Text(
-                                '\n${widget.user.name}',
-                                overflow: TextOverflow.clip,
+                              width: 145,
+                              child: RichText(
                                 maxLines: 2,
-                                style: TextStyles.headline4.copyWith(
-                                  color: AppColors.primary,
+                                overflow: TextOverflow.ellipsis,
+                                text: TextSpan(
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline4
+                                      ?.copyWith(
+                                        color: AppColors.primary,
+                                      ),
+                                  text: "${widget.user.name} ",
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "${String.fromCharCode(0xf026e)}",
+                                      style: TextStyle(
+                                        fontFamily: 'MaterialIcons',
+                                        fontSize: 18.0,
+                                        color: Colors.blue,
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(
-                              Icons.verified_rounded,
-                              size: 18,
-                              color: Color(0XFF0195F7),
                             ),
                           ],
                         ),
                       ],
                     ),
                     InfoDataWidget(
-                      data: '3.9M',
-                      data1: '1.2k',
-                      data2: '96',
+                      data: '20',
+                      data1: '692',
+                      data2: '115',
+                      isUser: true,
                     ),
                   ],
                 ),

@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/app_svg.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/app_text_styles.dart';
 
 class SocialLoginButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -46,9 +45,9 @@ class SocialLoginButton extends StatelessWidget {
                 children: [
                   Text(
                     "Entrar com Google",
-                    style: TextStyles.headline6.copyWith(
-                      color: AppColors.white,
-                    ),
+                    style: Theme.of(context).textTheme.headline6?.copyWith(
+                          color: AppColors.white,
+                        ),
                   ),
                 ],
               ),

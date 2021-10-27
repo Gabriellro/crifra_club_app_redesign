@@ -7,11 +7,13 @@ import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 
 class SettingsPage extends StatefulWidget {
   final UserModel user;
-  final List<SetSettingsModel> setSettingsModel;
+  final List<SetSettingsModel> setSettingsModelsgeneral;
+  final List<SetSettingsModel> setSettingsModelscipher;
   SettingsPage({
     Key? key,
     required this.user,
-    required this.setSettingsModel,
+    required this.setSettingsModelsgeneral,
+    required this.setSettingsModelscipher,
   }) : super(key: key);
 
   @override
@@ -112,8 +114,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child:
-                        SetSettingsWidget(setSettingsModels: setSettingsModels),
+                    child: SetSettingsWidget(
+                        setSettingsModels: setSettingsModelsgeneral),
                   ),
                 ],
               ),
@@ -139,7 +141,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: SetSettingsWidget(
-                            setSettingsModels: setSettingsModels,
+                            setSettingsModels: setSettingsModelscipher,
                           ),
                         ),
                       ],

@@ -33,7 +33,7 @@ class InfoDataWidget extends StatelessWidget {
                     ),
                     TextSpan(
                       text: '\nExibições',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodyText2,
                     )
                   ],
                 ),
@@ -58,7 +58,7 @@ class InfoDataWidget extends StatelessWidget {
                     ),
                     TextSpan(
                       text: '\nFã-clube',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodyText2,
                     )
                   ],
                 ),
@@ -83,7 +83,7 @@ class InfoDataWidget extends StatelessWidget {
                     ),
                     TextSpan(
                       text: '\nMusicas',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodyText2,
                     )
                   ],
                 ),
@@ -108,7 +108,7 @@ class InfoDataWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     TextSpan(
-                      text: '\nExibições',
+                      text: '\nColetâneas',
                       style: Theme.of(context).textTheme.caption,
                     )
                   ],
@@ -133,7 +133,7 @@ class InfoDataWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     TextSpan(
-                      text: '\nFã-clube',
+                      text: '\nSeguidores',
                       style: Theme.of(context).textTheme.caption,
                     )
                   ],
@@ -158,7 +158,7 @@ class InfoDataWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     TextSpan(
-                      text: '\nMusicas',
+                      text: '\nSeguindo',
                       style: Theme.of(context).textTheme.caption,
                     )
                   ],

@@ -124,7 +124,7 @@ class _SingerPageState extends State<SingerPage> {
                           children: [
                             SizedBox(height: 30),
                             Text(
-                              "${widget.singer.name} ${Icons.verified_rounded}",
+                              "Mais acessadas",
                               style: Theme.of(context).textTheme.headline6,
                             ),
                             SizedBox(height: 15),

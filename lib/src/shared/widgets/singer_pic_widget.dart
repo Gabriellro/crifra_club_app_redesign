@@ -9,14 +9,14 @@ class SingerPicWidget extends StatelessWidget {
     Key? key,
     this.pic,
     this.onTap,
-    required this.picSize,
-  }) : super(key: key);
+  })  : picSize = 24,
+        super(key: key);
 
   const SingerPicWidget.small({
     Key? key,
     this.pic,
     this.onTap,
-  })  : picSize = 24,
+  })  : picSize = 40,
         super(key: key);
   const SingerPicWidget.medium({
     Key? key,
@@ -62,7 +62,7 @@ class SingerPicWidget extends StatelessWidget {
           child: Container(
             child: Image.network(
               pic!,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
             ),
           ),
         ),

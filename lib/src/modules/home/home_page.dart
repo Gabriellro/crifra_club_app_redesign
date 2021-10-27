@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 setState(() {});
               },
               icon: Icon(
-                Icons.school_rounded,
+                Icons.video_library_rounded,
                 color: controller.currentPage == 1
                     ? AppColors.primary
                     : Theme.of(context).iconTheme.color?.withOpacity(0.2),

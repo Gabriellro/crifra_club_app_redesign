@@ -1,3 +1,4 @@
+import 'package:crifra_club_app_redesign/src/shared/models/info_model.dart';
 import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
 import 'package:flutter/material.dart';
 
@@ -99,7 +100,7 @@ final List<AlbumModel> albumModels = [
     ontap: '/Album',
   ),
 ];
-final List<SetSettingsModel> setSettingsModels = [
+final List<SetSettingsModel> confgerais = [
   SetSettingsModel(
     isIcon: true,
     icon: Icons.notifications_rounded,
@@ -111,6 +112,9 @@ final List<SetSettingsModel> setSettingsModels = [
     label: "Dark mode",
     isSwitch: true,
   ),
+];
+
+final List<SetSettingsModel> setSettingsModelscipher = [
   SetSettingsModel.cipher(
     label: "Instrumento",
     sublabel: "Violão/Guitarra",
@@ -131,52 +135,62 @@ final List<SingerModel> singers = [
     name: 'Avicii',
     imageUrl:
         'https://i.scdn.co/image/ab6761610000e5eb09bf4814c6585e1f69dfeef7',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //1
   SingerModel(
     name: 'Aloe Blacc',
     imageUrl:
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //2
   SingerModel(
     name: 'Agnes',
     imageUrl:
         'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //3
   SingerModel(
     name: 'Vargas & Lagola',
     imageUrl:
         'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //4
   SingerModel(
     name: 'Joe Janiak',
     imageUrl:
         'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //5
   SingerModel(
     name: 'Bonn',
     imageUrl:
         'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //6
   SingerModel(
     name: 'A R I Z O N A',
     imageUrl:
         'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //7
   SingerModel(
-      name: 'Imagine Dragons',
-      imageUrl:
-          'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80'),
+    name: 'Imagine Dragons',
+    imageUrl:
+        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
+  ),
   //8
   SingerModel(
     name: 'Noonie Bao',
     imageUrl:
         'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+    info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
 ];

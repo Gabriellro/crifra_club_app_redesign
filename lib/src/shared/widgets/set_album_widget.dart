@@ -52,17 +52,18 @@ class SetAlbumWidget extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Text.rich(
-                      TextSpan(
+                    RichText(
+                      text: TextSpan(
                         children: [
                           TextSpan(
-                              text: "Álbum de ",
-                              style: Theme.of(context).textTheme.caption),
+                            text: "Álbum de ",
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
                           TextSpan(
                             text: "${albumModel.author.name}",
                             style: Theme.of(context)
                                 .textTheme
-                                .caption
+                                .bodyText2
                                 ?.copyWith(color: AppColors.primary),
                           ),
                         ],
