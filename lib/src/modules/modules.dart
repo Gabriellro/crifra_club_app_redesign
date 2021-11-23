@@ -6,3 +6,4 @@ export 'profile/profile_page.dart';
 export 'settings/settings_page.dart';
 export 'singer/singer_page.dart';
 export 'splash/splash_page.dart';
+export 'song/songpage.dart';

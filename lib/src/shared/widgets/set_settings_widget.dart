@@ -3,13 +3,11 @@ import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SetSettingsWidget extends StatelessWidget {
-  final List<SetSettingsModel> setSettingsModelsgeneral;
-  final List<SetSettingsModel> setSettingsModelscipher;
+  final List<SetSettingsModel> setSettingsModels;
 
   const SetSettingsWidget({
     Key? key,
-    required this.setSettingsModelsgeneral,
-    required this.setSettingsModelscipher,
+    required this.setSettingsModels,
   }) : super(key: key);
 
   @override
@@ -18,7 +16,7 @@ class SetSettingsWidget extends StatelessWidget {
     return Container(
       height: 120,
       child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         itemCount: setSettingsModels.length,
         itemBuilder: (BuildContext context, int index) {
           final SetSettingsModel setSettingsModel = setSettingsModels[index];

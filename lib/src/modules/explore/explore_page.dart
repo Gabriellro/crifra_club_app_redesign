@@ -1,4 +1,5 @@
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
+import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:crifra_club_app_redesign/src/modules/home/home_controller.dart';
@@ -24,7 +25,6 @@ class _ExplorePageState extends State<ExplorePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -33,40 +33,31 @@ class _ExplorePageState extends State<ExplorePage> {
             title: "Cifra Club",
           ),
           SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: 24),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             sliver: SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: size.width,
-                        height: 162,
-                        child: CarouselSlider(
-                          options: CarouselOptions(
-                            initialPage: 2,
-                            enlargeCenterPage: true,
-                            disableCenter: true,
-                            scrollPhysics: BouncingScrollPhysics(),
-                            enableInfiniteScroll: false,
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      initialPage: 2,
+                      enlargeCenterPage: true,
+                      disableCenter: true,
+                      scrollPhysics: BouncingScrollPhysics(),
+                      enableInfiniteScroll: false,
+                      height: 162,
+                    ),
+                    items: imgList
+                        .map(
+                          (item) => ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.network(
+                              item,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          items: imgList
-                              .map(
-                                (item) => ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15.0)),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Image.network(item, fit: BoxFit.fitWidth),
-                                    ],
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
-                      ),
-                    ],
+                        )
+                        .toList(),
                   ),
                 ],
               ),
@@ -100,30 +91,38 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Álbuns',
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.primary,
-                      )
-                    ],
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24),
+                  bottomRight: Radius.circular(24),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Álbuns',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: AppColors.primary,
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 15),
-                AlbumList(
-                  albumModels: albumModels,
-                ),
-              ],
+                  SizedBox(height: 15),
+                  AlbumList(
+                    albumModels: albumModels,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

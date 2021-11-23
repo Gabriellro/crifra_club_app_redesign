@@ -35,6 +35,7 @@ class AppWidget extends StatelessWidget {
               setSettingsModelsgeneral: setSettingsModelsgeneral,
               setSettingsModelscipher: setSettingsModelscipher,
             ),
+        "/Song": (_) => SongPage(),
       },
     );
   }

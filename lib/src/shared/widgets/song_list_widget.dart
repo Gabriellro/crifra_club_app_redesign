@@ -19,55 +19,61 @@ class SongListWidget extends StatelessWidget {
             final SongModel songModel = songModels[index];
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        songModel.name,
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                      SizedBox(height: 3),
-                      Row(
-                        children: [
-                          Visibility(
-                            visible:
-                                songModel.isExplicit == null ? false : true,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.explicit_rounded,
-                                  size: 18,
-                                  color: Color(0xFFF04747),
-                                ),
-                                SizedBox(width: 5),
-                              ],
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  "/Song",
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          songModel.name,
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                        SizedBox(height: 3),
+                        Row(
+                          children: [
+                            Visibility(
+                              visible:
+                                  songModel.isExplicit == null ? false : true,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.explicit_rounded,
+                                    size: 18,
+                                    color: Color(0xFFF04747),
+                                  ),
+                                  SizedBox(width: 5),
+                                ],
+                              ),
                             ),
-                          ),
-                          Text(
-                            "${songModel.author.name}",
-                            style: Theme.of(context).textTheme.bodyText2,
-                          ),
-                          Visibility(
-                            visible: songModel.feat?.name != null,
-                            child: Text(
-                              ", feat ${songModel.feat?.name ?? null}",
+                            Text(
+                              "${songModel.author.name}",
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.more_vert_rounded,
+                            Visibility(
+                              visible: songModel.feat?.name != null,
+                              child: Text(
+                                ", feat ${songModel.feat?.name ?? null}",
+                                style: Theme.of(context).textTheme.bodyText2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    onPressed: () {},
-                  )
-                ],
+                    IconButton(
+                      icon: Icon(
+                        Icons.more_vert_rounded,
+                      ),
+                      onPressed: () {},
+                    )
+                  ],
+                ),
               ),
             );
           },

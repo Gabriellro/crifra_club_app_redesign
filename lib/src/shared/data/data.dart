@@ -1,5 +1,3 @@
-import 'package:crifra_club_app_redesign/src/shared/models/info_model.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
@@ -100,7 +98,7 @@ final List<AlbumModel> albumModels = [
     ontap: '/Album',
   ),
 ];
-final List<SetSettingsModel> confgerais = [
+final List<SetSettingsModel> setSettingsModelsgeneral = [
   SetSettingsModel(
     isIcon: true,
     icon: Icons.notifications_rounded,

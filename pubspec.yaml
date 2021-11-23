@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.0.6
   carousel_slider: ^4.0.0
   cached_network_image:
+  expandable:
   
 dev_dependencies:
   flutter_test:
