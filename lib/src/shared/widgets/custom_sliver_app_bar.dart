@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
+import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   final String title;
@@ -24,11 +25,13 @@ class CustomSliverAppBar extends StatelessWidget {
         CircleAvatar(
           backgroundColor: Theme.of(context).cardColor,
           child: IconButton(
-            onPressed: () {},
             icon: Icon(
               Icons.search_rounded,
               color: AppColors.primary,
             ),
+            onPressed: () {
+              Navigator.of(context).pushNamed(SearchPage.routeName);
+            },
           ),
         ),
         Padding(

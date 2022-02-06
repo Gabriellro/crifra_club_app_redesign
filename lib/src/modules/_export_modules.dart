@@ -7,3 +7,4 @@ export 'settings/settings_page.dart';
 export 'singer/singer_page.dart';
 export 'splash/splash_page.dart';
 export 'song/song_page.dart';
+export 'search/search_page.dart';
