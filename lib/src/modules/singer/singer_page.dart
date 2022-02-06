@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 
 class SingerPage extends StatefulWidget {
-  final SingerModel singer;
-  SingerPage({Key? key, required this.singer}) : super(key: key);
-
+  static String routeName = "/SingerPage";
   @override
   _SingerPageState createState() => _SingerPageState();
 }
 
 class _SingerPageState extends State<SingerPage> {
+  bool _turnFan = false;
   @override
   Widget build(BuildContext context) {
+    final singer = ModalRoute.of(context)!.settings.arguments as SingerModel;
+
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -69,7 +70,7 @@ class _SingerPageState extends State<SingerPage> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       SingerPicWidget.medium(
-                        pic: widget.singer.imageUrl,
+                        pic: singer.imageUrl,
                       ),
                       SizedBox(width: 20),
                       Container(
@@ -79,7 +80,7 @@ class _SingerPageState extends State<SingerPage> {
                           overflow: TextOverflow.ellipsis,
                           text: TextSpan(
                             style: Theme.of(context).textTheme.headline4,
-                            text: "${widget.singer.name} ",
+                            text: "${singer.name} ",
                             children: <TextSpan>[
                               TextSpan(
                                 text: "${String.fromCharCode(0xf026e)}",
@@ -96,9 +97,11 @@ class _SingerPageState extends State<SingerPage> {
                     ],
                   ),
                   InfoDataWidget(
-                    data: '3.9M',
-                    data1: '1.2k',
-                    data2: '96',
+                    infoModel: InfoModel.singer(
+                      data: singer.info.data,
+                      data1: singer.info.data1,
+                      data2: singer.info.data2,
+                    ),
                   ),
                 ],
               ),
@@ -157,9 +160,14 @@ class _SingerPageState extends State<SingerPage> {
                       top: -20,
                       right: 36,
                       child: FabButton(
-                        icon: Icons.favorite_border_rounded,
-                        label: "Virar Fã",
-                        onTap: () => print("Fan Button"),
+                        icon: _turnFan == false
+                            ? Icons.favorite_border_rounded
+                            : Icons.favorite_rounded,
+                        label: _turnFan == false ? "Virar Fã" : "Deixar Fã",
+                        backgroundColor: _turnFan == false
+                            ? Theme.of(context).primaryColor.withOpacity(0.5)
+                            : Theme.of(context).primaryColor,
+                        onTap: () => setState(() => _turnFan = !_turnFan),
                       ),
                     ),
                   ],

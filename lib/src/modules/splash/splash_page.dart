@@ -4,6 +4,7 @@ import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/app_images.dart';
 
 class SplashPage extends StatelessWidget {
+  static String routeName = "/";
   const SplashPage({Key? key}) : super(key: key);
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 
 final List<SongModel> songModels = [
   SongModel(
@@ -9,13 +9,14 @@ final List<SongModel> songModels = [
     feat: singers[3],
   ),
   SongModel(
-    name: "Heaven ",
+    name: "Heaven",
+    feat: singers[3],
     author: singers[0],
   ),
   SongModel(
-    name: "SOS ",
+    name: "SOS",
     author: singers[0],
-    feat: singers[1],
+    feat: singers[3],
   ),
   SongModel(
     name: "Tough Love ",
@@ -74,6 +75,7 @@ final List<AlbumModel> albumModels = [
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b273660ee24281a547103f466ff5',
     ontap: '/Album',
+    infoModel: InfoModel.album(data: "2019", data1: "12", data2: "38"),
     songModel: songModels,
   ),
   AlbumModel(
@@ -81,24 +83,30 @@ final List<AlbumModel> albumModels = [
     author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b2735393c5d3cac806092a9bc468',
+    infoModel: InfoModel.album(data: "2019", data1: "12", data2: "38"),
     ontap: '/Album',
+    songModel: songModels,
   ),
   AlbumModel(
     name: 'True: Avicii By Avicii',
     author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b273182fe5b5d3e3c3fcc895a3c8',
+    infoModel: InfoModel.album(data: "2019", data1: "12", data2: "38"),
     ontap: '/Album',
+    songModel: songModels,
   ),
   AlbumModel(
     name: 'The Days / Nights',
     author: singers[0],
     albumimageUrl:
         'https://i.scdn.co/image/ab67616d0000b2730ae4f4d42e4a09f3a29f64ad',
+    infoModel: InfoModel.album(data: "2019", data1: "12", data2: "38"),
     ontap: '/Album',
+    songModel: songModels,
   ),
 ];
-final List<SetSettingsModel> setSettingsModelsgeneral = [
+final List<SetSettingsModel> setSettingsModelsGeneral = [
   SetSettingsModel(
     isIcon: true,
     icon: Icons.notifications_rounded,
@@ -109,6 +117,35 @@ final List<SetSettingsModel> setSettingsModelsgeneral = [
     icon: Icons.nights_stay_rounded,
     label: "Dark mode",
     isSwitch: true,
+  ),
+];
+final List<SetSettingsModel> setSettingsModelsDownloads = [
+  SetSettingsModel(
+    icon: Icons.storage_rounded,
+    label: "Armazenamento",
+    isIcon: true,
+  ),
+  SetSettingsModel(
+    icon: Icons.data_usage_rounded,
+    label: "Uso de dados",
+    isIcon: true,
+  ),
+];
+final List<SetSettingsModel> setSettingsModelsSobre = [
+  SetSettingsModel(
+    icon: Icons.get_app_rounded,
+    label: "Conheça os nossos produtos",
+    isIcon: true,
+  ),
+  SetSettingsModel(
+    isIcon: true,
+    icon: Icons.help_outline_rounded,
+    label: "Suporte",
+  ),
+  SetSettingsModel(
+    icon: Icons.info_rounded,
+    label: "Informações do Aplicativo",
+    isIcon: true,
   ),
 ];
 
@@ -122,8 +159,28 @@ final List<SetSettingsModel> setSettingsModelscipher = [
     sublabel: "Principal",
   ),
   SetSettingsModel.cipher(
+    label: "Afinação",
+    sublabel: "E A D G B E",
+  ),
+  SetSettingsModel.cipher(
+    label: "Tom",
+    sublabel: "Bm (Padrão)",
+  ),
+  SetSettingsModel.cipher(
     label: "Capotraste",
-    sublabel: "Padrão",
+    sublabel: "2ª casa",
+  ),
+  SetSettingsModel(
+    label: "Lista de acordes",
+    isSwitch: true,
+  ),
+  SetSettingsModel(
+    label: "Mostrar tabs",
+    isSwitch: true,
+  ),
+  SetSettingsModel(
+    label: "Canhoto",
+    isSwitch: true,
   ),
 ];
 

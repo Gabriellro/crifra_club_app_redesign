@@ -1,9 +1,9 @@
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 
 class SetAlbumWidget extends StatelessWidget {
   final AlbumModel albumModel;
@@ -77,9 +77,11 @@ class SetAlbumWidget extends StatelessWidget {
           ],
         ),
         InfoDataWidget(
-          data: '3.9M',
-          data1: '1.2k',
-          data2: '96',
+          infoModel: InfoModel.album(
+            data: albumModel.infoModel.data,
+            data1: albumModel.infoModel.data1,
+            data2: albumModel.infoModel.data2,
+          ),
         ),
       ],
     );

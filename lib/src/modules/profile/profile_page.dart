@@ -1,16 +1,15 @@
+import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 
 class ProfilePage extends StatefulWidget {
-  final UserModel user;
-  ProfilePage({Key? key, required this.user}) : super(key: key);
-
+  static String routeName = "/ProfilePage";
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -21,6 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as UserModel;
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -42,8 +42,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     setState(() {
                       Navigator.pushNamed(
                         context,
-                        "/settings",
-                        arguments: widget.user,
+                        SettingsPage.routeName,
+                        arguments: user,
                       );
                     });
                   },
@@ -80,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             borderRadius: BorderRadius.circular(100),
                             child: Container(
                               child: Image.network(
-                                widget.user.photoURL!,
+                                user.photoURL!,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -103,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ?.copyWith(
                                         color: AppColors.primary,
                                       ),
-                                  text: "${widget.user.name} ",
+                                  text: "${user.name} ",
                                   children: <TextSpan>[
                                     TextSpan(
                                       text: "${String.fromCharCode(0xf026e)}",
@@ -120,12 +120,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                       ],
-                    ),
-                    InfoDataWidget(
-                      data: '20',
-                      data1: '692',
-                      data2: '115',
-                      isUser: true,
                     ),
                   ],
                 ),
@@ -214,6 +208,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         icon: Icons.edit_rounded,
                         label: "Editar",
                         onTap: () => print("Fan Button"),
+                        backgroundColor: Theme.of(context).primaryColor,
                       ),
                     ),
                   ],

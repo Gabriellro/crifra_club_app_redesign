@@ -1,15 +1,13 @@
+import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 
 class SingerList extends StatelessWidget {
   final List<SingerModel> singers;
 
-  const SingerList({
-    Key? key,
-    required this.singers,
-  }) : super(key: key);
+  const SingerList({Key? key, required this.singers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class SingerList extends StatelessWidget {
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(
                   context,
-                  "/Singer",
+                  SingerPage.routeName,
                   arguments: singers[index],
                 ),
                 child: Column(

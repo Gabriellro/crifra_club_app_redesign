@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 
 class SettingsPage extends StatefulWidget {
-  final UserModel user;
+  static String routeName = "/SettingsPage";
+
   final List<SetSettingsModel> setSettingsModelsgeneral;
   final List<SetSettingsModel> setSettingsModelscipher;
   SettingsPage({
     Key? key,
-    required this.user,
     required this.setSettingsModelsgeneral,
     required this.setSettingsModelscipher,
   }) : super(key: key);
@@ -23,6 +23,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as UserModel;
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -60,7 +61,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             borderRadius: BorderRadius.circular(100),
                             child: Container(
                               child: Image.network(
-                                widget.user.photoURL!,
+                                user.photoURL!,
                                 fit: BoxFit.fitHeight,
                               ),
                             ),
@@ -73,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             Container(
                               width: 150,
                               child: Text(
-                                '${widget.user.name}',
+                                '${user.name}',
                                 overflow: TextOverflow.clip,
                                 style: Theme.of(context).textTheme.headline6,
                               ),
@@ -108,14 +109,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text(
                     'Configurações gerais',
                     overflow: TextOverflow.clip,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
-                          fontSize: 14,
-                        ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: SetSettingsWidget(
-                        setSettingsModels: setSettingsModelsgeneral),
+                        setSettingsModels: setSettingsModelsGeneral),
                   ),
                 ],
               ),
@@ -130,9 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text(
                     'Cifras',
                     overflow: TextOverflow.clip,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
-                          fontSize: 14,
-                        ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
@@ -142,6 +139,62 @@ class _SettingsPageState extends State<SettingsPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: SetSettingsWidget(
                             setSettingsModels: setSettingsModelscipher,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Downloads',
+                    overflow: TextOverflow.clip,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: SetSettingsWidget(
+                            setSettingsModels: setSettingsModelsDownloads,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Sobre',
+                    overflow: TextOverflow.clip,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: SetSettingsWidget(
+                            setSettingsModels: setSettingsModelsSobre,
                           ),
                         ),
                       ],

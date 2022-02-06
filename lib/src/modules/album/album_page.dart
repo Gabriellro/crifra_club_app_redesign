@@ -1,27 +1,25 @@
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
 
 import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 
 class AlbumPage extends StatefulWidget {
-  final AlbumModel albumModel;
-
-  const AlbumPage({
-    Key? key,
-    required this.albumModel,
-  }) : super(key: key);
+  static String routeName = "/AlbumPage";
 
   @override
   _AlbumPageState createState() => _AlbumPageState();
 }
 
 class _AlbumPageState extends State<AlbumPage> {
+  bool _onfavorite = false;
   @override
   Widget build(BuildContext context) {
+    final albumModel = ModalRoute.of(context)!.settings.arguments as AlbumModel;
+
     return Scaffold(
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
@@ -37,11 +35,14 @@ class _AlbumPageState extends State<AlbumPage> {
             actions: [
               IconButton(
                 icon: Icon(
-                  Icons.favorite_border_rounded,
-                  color: Theme.of(context).iconTheme.color!.withOpacity(0.2),
-                ),
+                    _onfavorite == false
+                        ? Icons.favorite_border_rounded
+                        : Icons.favorite_rounded,
+                    color: _onfavorite == true
+                        ? Theme.of(context).primaryColor
+                        : Theme.of(context).iconTheme.color!.withOpacity(0.2)),
                 tooltip: 'Favoritar',
-                onPressed: () => print("Favoritei"),
+                onPressed: () => setState(() => _onfavorite = !_onfavorite),
               ),
               IconButton(
                 icon: Icon(
@@ -71,9 +72,7 @@ class _AlbumPageState extends State<AlbumPage> {
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 36.0),
             sliver: SliverToBoxAdapter(
-              child: SetAlbumWidget(
-                albumModel: widget.albumModel,
-              ),
+              child: SetAlbumWidget(albumModel: albumModel),
             ),
           ),
           SliverPadding(
@@ -90,11 +89,7 @@ class _AlbumPageState extends State<AlbumPage> {
                     width: double.infinity,
                     height: 600,
                   ),
-                  widget.albumModel.songModel != null
-                      ? SongListWidget(
-                          songModels: songModels,
-                        )
-                      : SizedBox.shrink(),
+                  SongListWidget(songModels: songModels),
                   Positioned(
                     top: -20,
                     right: 36,
@@ -102,6 +97,7 @@ class _AlbumPageState extends State<AlbumPage> {
                       icon: Icons.shuffle_rounded,
                       label: "Aleatória",
                       onTap: () => print("Aleatória"),
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                   )
                 ],

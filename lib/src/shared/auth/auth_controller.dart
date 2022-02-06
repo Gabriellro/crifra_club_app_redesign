@@ -1,3 +1,5 @@
+import 'package:crifra_club_app_redesign/src/modules/home/home_page.dart';
+import 'package:crifra_club_app_redesign/src/modules/login/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +15,13 @@ class AuthController {
     if (user != null) {
       saveUser(user);
       _user = user;
-      Navigator.pushReplacementNamed(context, "/Home", arguments: user);
+      Navigator.pushReplacementNamed(
+        context,
+        HomePage.routeName,
+        arguments: user,
+      );
     } else {
-      Navigator.pushReplacementNamed(context, "/Login");
+      Navigator.pushReplacementNamed(context, LoginPage.routeName);
     }
   }
 

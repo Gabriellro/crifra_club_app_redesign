@@ -3,7 +3,7 @@ import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:crifra_club_app_redesign/src/modules/home/home_controller.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/widgets.dart';
+import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 
 class ExplorePage extends StatefulWidget {

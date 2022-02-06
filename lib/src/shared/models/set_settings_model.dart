@@ -8,15 +8,6 @@ class SetSettingsModel {
   final String? sublabel;
   final bool? isSwitch;
 
-  const SetSettingsModel({
-    this.isSwitch = false,
-    this.icon = Icons.add,
-    required this.label,
-    this.isIcon = false,
-    this.isSublabel = false,
-    this.sublabel = "",
-  });
-
   const SetSettingsModel.cipher({
     this.isSwitch = false,
     this.icon = Icons.add,
@@ -24,5 +15,23 @@ class SetSettingsModel {
     this.isIcon = false,
     this.isSublabel = true,
     required this.sublabel,
+  });
+
+  const SetSettingsModel.downloads({
+    this.isSwitch = false,
+    this.icon = Icons.add,
+    required this.label,
+    this.isIcon = true,
+    this.isSublabel = true,
+    required this.sublabel,
+  });
+
+  const SetSettingsModel({
+    this.isSwitch = false,
+    this.icon = Icons.add,
+    required this.label,
+    this.isIcon = false,
+    this.isSublabel = false,
+    this.sublabel = "",
   });
 }

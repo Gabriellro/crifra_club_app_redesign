@@ -7,11 +7,13 @@ class FabButton extends StatelessWidget {
   final VoidCallback onTap;
   final String? label;
   final IconData icon;
+  final Color backgroundColor;
   const FabButton({
     Key? key,
-    required this.onTap,
     this.label = "",
     this.icon = Icons.add,
+    required this.onTap,
+    required this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class FabButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         shape: StadiumBorder(),
         side: BorderSide(width: 2, color: AppColors.primary),
-        backgroundColor: AppColors.primary,
+        backgroundColor: backgroundColor,
       ),
       onPressed: onTap,
       child: Row(

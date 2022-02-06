@@ -43,9 +43,7 @@ TextTheme customTextThemeLight() {
       fontSize: 14,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.1,
-      color: LightColors.textLigth.withOpacity(
-        0.3,
-      ),
+      color: LightColors.textLigth.withOpacity(0.3),
     ),
     bodyText1: GoogleFonts.quicksand(
       fontSize: 16,
@@ -56,9 +54,7 @@ TextTheme customTextThemeLight() {
       fontSize: 14,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.25,
-      color: LightColors.textLigth.withOpacity(
-        0.3,
-      ),
+      color: LightColors.textLigth.withOpacity(0.3),
     ),
     button: GoogleFonts.quicksand(
       fontSize: 14,
@@ -69,9 +65,7 @@ TextTheme customTextThemeLight() {
       fontSize: 12,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.4,
-      color: LightColors.textLigth.withOpacity(
-        0.3,
-      ),
+      color: LightColors.textLigth.withOpacity(0.3),
     ),
     overline: GoogleFonts.quicksand(
       fontSize: 10,
@@ -121,9 +115,7 @@ TextTheme customTextThemeDark() {
       fontSize: 14,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.1,
-      color: DarkColors.textDark.withOpacity(
-        0.3,
-      ),
+      color: DarkColors.textDark.withOpacity(0.3),
     ),
     bodyText1: GoogleFonts.quicksand(
       fontSize: 16,
@@ -147,9 +139,7 @@ TextTheme customTextThemeDark() {
       fontSize: 12,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.4,
-      color: DarkColors.textDark.withOpacity(
-        0.3,
-      ),
+      color: DarkColors.textDark.withOpacity(0.3),
     ),
     overline: GoogleFonts.quicksand(
       fontSize: 10,

@@ -1,6 +1,7 @@
+import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/models/models.dart';
+import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 
 class SongListWidget extends StatelessWidget {
   final List<SongModel> songModels;
@@ -15,65 +16,46 @@ class SongListWidget extends StatelessWidget {
         child: ListView.builder(
           physics: BouncingScrollPhysics(),
           itemCount: songModels.length,
+          itemExtent: 64,
           itemBuilder: (BuildContext context, int index) {
             final SongModel songModel = songModels[index];
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  "/Song",
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            return ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 24),
+              onTap: () => Navigator.pushNamed(context, SongPage.routeName),
+              title: Text(
+                songModel.name,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              subtitle: Row(
+                children: [
+                  Visibility(
+                    visible: songModel.isExplicit == null ? false : true,
+                    child: Row(
                       children: [
-                        Text(
-                          songModel.name,
-                          style: Theme.of(context).textTheme.subtitle1,
+                        Icon(
+                          Icons.explicit_rounded,
+                          size: 18,
+                          color: Theme.of(context).errorColor,
                         ),
-                        SizedBox(height: 3),
-                        Row(
-                          children: [
-                            Visibility(
-                              visible:
-                                  songModel.isExplicit == null ? false : true,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.explicit_rounded,
-                                    size: 18,
-                                    color: Color(0xFFF04747),
-                                  ),
-                                  SizedBox(width: 5),
-                                ],
-                              ),
-                            ),
-                            Text(
-                              "${songModel.author.name}",
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                            Visibility(
-                              visible: songModel.feat?.name != null,
-                              child: Text(
-                                ", feat ${songModel.feat?.name ?? null}",
-                                style: Theme.of(context).textTheme.bodyText2,
-                              ),
-                            ),
-                          ],
-                        ),
+                        SizedBox(width: 5),
                       ],
                     ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.more_vert_rounded,
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
+                  ),
+                  Text(
+                    "${songModel.author.name}",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Text(
+                    ", feat ${songModel.feat.name}",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
+              ),
+              trailing: IconButton(
+                icon: Icon(
+                  Icons.more_vert_rounded,
                 ),
+                onPressed: () {},
               ),
             );
           },

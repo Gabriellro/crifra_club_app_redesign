@@ -1,6 +1,6 @@
 name: crifra_club_app_redesign
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -20,17 +20,14 @@ dependencies:
   carousel_slider: ^4.0.0
   cached_network_image:
   expandable:
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - assets/images/
     - assets/svg/
-  
-

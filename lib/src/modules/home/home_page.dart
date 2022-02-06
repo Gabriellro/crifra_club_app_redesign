@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 import 'package:crifra_club_app_redesign/src/shared/models/user_model.dart';
 
@@ -7,9 +8,7 @@ import 'package:crifra_club_app_redesign/src/modules/explore/explore_page.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
-  final UserModel user;
-  HomePage({Key? key, required this.user}) : super(key: key);
-
+  static String routeName = "/HomePage";
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -19,6 +18,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as UserModel;
+
     return Scaffold(
       body: [
         ExplorePage(),
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 setState(() {});
               },
               icon: Icon(
-                Icons.video_library_rounded,
+                Icons.library_music_rounded,
                 color: controller.currentPage == 1
                     ? AppColors.primary
                     : Theme.of(context).iconTheme.color?.withOpacity(0.2),
@@ -59,8 +60,8 @@ class _HomePageState extends State<HomePage> {
                 setState(() {
                   Navigator.pushNamed(
                     context,
-                    "/Profile",
-                    arguments: widget.user,
+                    ProfilePage.routeName,
+                    arguments: user,
                   );
                 });
               },
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   image: DecorationImage(
-                    image: NetworkImage(widget.user.photoURL!),
+                    image: NetworkImage(user.photoURL!),
                   ),
                 ),
               ),
