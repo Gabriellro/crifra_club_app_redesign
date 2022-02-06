@@ -9,7 +9,7 @@
 
 # Cifra Club App - Flutter Redesign UI 
 
-Esse projeto foi desevolvido como processo de redesing, partindo do projeto legado, e trazendo uma nova interface muito mais intitiva e minimalista além de funcionar com tema escuro diretamente do Smartphone
+Esse projeto foi desevolvido como processo de redesing, partindo do projeto legado, e trazendo uma nova interface muito mais intuitiva e minimalista além de funcionar com tema escuro diretamente do Smartphone
 
 O Cifra Club Redesign se trata de um app mobile feito em Flutter para leitura de Cifras e tablaturas, contendo recursos como o uso de Firebase Core e SignIn, Animações e Estilizações Personalizadas, entre vários outros pontos, como o uso do SharedPreferences.
 
