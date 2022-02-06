@@ -113,8 +113,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: SetSettingsWidget(
-                        setSettingsModels: setSettingsModelsGeneral),
+                    child: Container(
+                      height: 100,
+                      child: SetSettingsWidget(
+                          setSettingsModels: setSettingsModelsGeneral),
+                    ),
                   ),
                 ],
               ),
@@ -137,8 +140,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: SetSettingsWidget(
-                            setSettingsModels: setSettingsModelscipher,
+                          child: Container(
+                            height: 400,
+                            child: SetSettingsWidget(
+                              setSettingsModels: setSettingsModelscipher,
+                            ),
                           ),
                         ),
                       ],
@@ -165,8 +171,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: SetSettingsWidget(
-                            setSettingsModels: setSettingsModelsDownloads,
+                          child: Container(
+                            height: 100,
+                            child: SetSettingsWidget(
+                              setSettingsModels: setSettingsModelsDownloads,
+                            ),
                           ),
                         ),
                       ],
@@ -193,8 +202,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: SetSettingsWidget(
-                            setSettingsModels: setSettingsModelsSobre,
+                          child: Container(
+                            height: 200,
+                            child: SetSettingsWidget(
+                              setSettingsModels: setSettingsModelsSobre,
+                            ),
                           ),
                         ),
                       ],

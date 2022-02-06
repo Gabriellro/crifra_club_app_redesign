@@ -191,8 +191,11 @@ class _SongPageState extends State<SongPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    SetSettingsWidget(
-                        setSettingsModels: setSettingsModelscipher),
+                    Container(
+                      height: 400,
+                      child: SetSettingsWidget(
+                          setSettingsModels: setSettingsModelscipher),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
