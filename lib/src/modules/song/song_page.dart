@@ -1,3 +1,4 @@
+import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
 import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
@@ -21,6 +22,8 @@ class _SongPageState extends State<SongPage> {
   bool _showFilterSettings = false;
   bool _showTextSize = false;
   bool _showAutoScrolling = false;
+  bool _showTypeCipher = true;
+  double _lyricssize = 516.0;
 
   RangeValues _rangeSliderDiscreteValues = const RangeValues(0, 0);
 
@@ -33,21 +36,20 @@ class _SongPageState extends State<SongPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.close_rounded,
-                color: Theme.of(context).iconTheme.color,
-              ),
-            ),
             SvgPicture.asset(
               AppImages.icTurtle,
-              color: Theme.of(context).iconTheme.color!.withOpacity(0.2),
+              color: _rangeSliderDiscreteValues.start == -2
+                  ? Theme.of(context).primaryColor
+                  : _rangeSliderDiscreteValues.start == -1
+                      ? Theme.of(context).primaryColor.withOpacity(0.5)
+                      : Theme.of(context).iconTheme.color!.withOpacity(0.2),
             ),
             RangeSlider(
               activeColor: Theme.of(context).primaryColor,
               inactiveColor: Theme.of(context).cardColor,
-              values: _rangeSliderDiscreteValues,
+              values: _rangeSliderDiscreteValues.start < 0
+                  ? RangeValues(_rangeSliderDiscreteValues.start, 0)
+                  : RangeValues(0, _rangeSliderDiscreteValues.end),
               min: _rangeSliderDiscreteValues.end < 0 ? 0 : -2,
               max: _rangeSliderDiscreteValues.start > 0 ? 0 : 2,
               divisions: 4,
@@ -59,7 +61,11 @@ class _SongPageState extends State<SongPage> {
             ),
             SvgPicture.asset(
               AppImages.icRabbit,
-              color: Theme.of(context).iconTheme.color!.withOpacity(0.2),
+              color: _rangeSliderDiscreteValues.end == 2
+                  ? Theme.of(context).primaryColor
+                  : _rangeSliderDiscreteValues.end == 1
+                      ? Theme.of(context).primaryColor.withOpacity(0.5)
+                      : Theme.of(context).iconTheme.color!.withOpacity(0.2),
             ),
             IconButton(
               onPressed: () {},
@@ -90,7 +96,9 @@ class _SongPageState extends State<SongPage> {
             RangeSlider(
               activeColor: Theme.of(context).primaryColor,
               inactiveColor: Theme.of(context).cardColor,
-              values: _rangeSliderDiscreteValues,
+              values: _rangeSliderDiscreteValues.start < 0
+                  ? RangeValues(_rangeSliderDiscreteValues.start, 0)
+                  : RangeValues(0, _rangeSliderDiscreteValues.end),
               min: _rangeSliderDiscreteValues.end < 0 ? 0 : -2,
               max: _rangeSliderDiscreteValues.start > 0 ? 0 : 2,
               divisions: 4,
@@ -107,6 +115,51 @@ class _SongPageState extends State<SongPage> {
                 color: Theme.of(context).iconTheme.color,
               ),
             ),
+          ],
+        ),
+      ),
+    );
+    final _filterSettings = Visibility(
+      visible: _showFilterSettings,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            Container(
+              height: 400,
+              child:
+                  SetSettingsWidget(setSettingsModels: setSettingsModelscipher),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Personalizar atalhos",
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                SizedBox(width: 20),
+                CircleAvatar(
+                  backgroundColor: Theme.of(context).cardColor,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.edit_rounded,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 12),
+            Container(
+              height: 5,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Theme.of(context).iconTheme.color!.withOpacity(0.2),
+              ),
+            ),
+            SizedBox(height: 12),
           ],
         ),
       ),
@@ -149,6 +202,9 @@ class _SongPageState extends State<SongPage> {
                 _showFilterSettings = !_showFilterSettings;
                 _showAutoScrolling = false;
                 _showTextSize = false;
+                _showFilterSettings == true
+                    ? _lyricssize = 516 - 470
+                    : _lyricssize = 516;
               },
             ),
           ),
@@ -180,64 +236,51 @@ class _SongPageState extends State<SongPage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Visibility(
-              visible: _showFilterSettings,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 400,
-                      child: SetSettingsWidget(
-                          setSettingsModels: setSettingsModelscipher),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Personalizar atalhos",
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
-                        SizedBox(width: 20),
-                        CircleAvatar(
-                          backgroundColor: Theme.of(context).cardColor,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.edit_rounded,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12),
-                    Container(
-                      height: 5,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color:
-                            Theme.of(context).iconTheme.color!.withOpacity(0.2),
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                  ],
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _filterSettings,
+          Visibility(
+            visible: _showTypeCipher,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ChoiceChip(
+                    label: Text('Principal'),
+                    labelStyle: Theme.of(context).textTheme.bodyText1,
+                    selected: true,
+                    selectedColor: Theme.of(context).primaryColor,
+                    disabledColor: Theme.of(context).cardColor,
+                  ),
+                  ChoiceChip(
+                    label: Text('Simplificada'),
+                    selected: false,
+                    disabledColor: Theme.of(context).cardColor,
+                  ),
+                  ActionChip(
+                    avatar: Icon(Icons.keyboard_arrow_down_rounded),
+                    label: Text('mais'),
+                    onPressed: () {},
+                    backgroundColor: Theme.of(context).cardColor,
+                  ),
+                ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 573,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                color: Theme.of(context).cardColor,
-              ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            width: double.infinity,
+            height: _lyricssize,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              color: Theme.of(context).cardColor,
+            ),
+            child: SingleChildScrollView(
+              physics: _showFilterSettings == true
+                  ? NeverScrollableScrollPhysics()
+                  : BouncingScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -247,69 +290,72 @@ class _SongPageState extends State<SongPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "Tom: Bm (forma dos acordes no tom de Am)\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "Capotraste na 2ª casa\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Primeira Parte]\n",
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "Am            F/C             C/G\nFeeling my way through the darkness\nAm        F/C          C/G\n  Guided by a beating heart\nAm         F/C            C/G\n  I can't tell where the journey will end\nAm        F/C           C/G\n  But I know where it start\nAm             F/C      C/G\n  They tell me I'm too young to understand\nAm              F/C             C/G\n  They say I'm caught up in a dream\nAm                F/C          \n  Well life will pass me by \n   C/G\nIf I don't open up my eyes\nAm             F/C     C/G\n  Well that's fine by me\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Refrão]\n",
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "\n           Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  \n  Didn't know I was lost\n    Em7    Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  Em7\n  Didn't know I was lost\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Solo]\n",
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "Am  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "(Repetições)\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "Am         F/C          C/G\n  I tried carrying the weight of the world\nAm      F/C         C/G\n  But I only have two hands\nAm        F/C                C/G\n  Hope I get the chance to travel the world\nAm             F/C       C/G\n  But I don't have any plans\nAm            F/C             C/G\n  I wish that I could stay forever this young\nAm       F/C           C/G\n  Not afraid to close my eyes\nAm          F/C          C/G\n  Life's a game made for everyone\nAm     F/C             C/G\n  And love is the prize\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Refrão]\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "           Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  \n  Didn't know I was lost\n    Em7    Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  Em7\n  Didn't know I was lost\nAm           F/C       C/G  G\n  I didn't know I was lost\nAm           F/C       C/G  Em7\n  I didn't know I was lost\nAm           F/C       C/G   G\n  I didn't know I was lost\nAm           F/C  C/G  Em7\n  I didn't know\n",
                     ),
                     Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
-                    ),
-                    Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7",
+                      "[Solo] Am  F/C  C/G  G\n           Am  F/C  C/G  Em\n           Am  F/C  C/G  G\n           Am  F/C  C/G  Em7  Am",
                     ),
                   ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   backgroundColor: Theme.of(context).primaryColor,
-      //   icon: Icon(
-      //     Icons.ondemand_video_rounded,
-      //     color: Theme.of(context).iconTheme.color,
-      //   ),
-      //   label: Text(
-      //     "Vídeo aula",
-      //     style: Theme.of(context).textTheme.button,
-      //   ),
-      //   onPressed: () {},
-      // ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Theme.of(context).primaryColor,
+        icon: Icon(
+          Icons.ondemand_video_rounded,
+          color: Theme.of(context).primaryIconTheme.color,
+        ),
+        label: Text(
+          "Vídeo aula",
+          style: Theme.of(context)
+              .textTheme
+              .button!
+              .copyWith(color: AppColors.white),
+        ),
+        onPressed: () {},
+      ),
       bottomNavigationBar: Container(
         height: _showAutoScrolling || _showTextSize == true ? 56 + 56 : 56,
         color: Theme.of(context).backgroundColor,
@@ -342,6 +388,9 @@ class _SongPageState extends State<SongPage> {
                       _showFilterSettings = false;
                       _showAutoScrolling = false;
                       _showTextSize = !_showTextSize;
+                      _showTextSize == true
+                          ? _lyricssize = 516 - 56
+                          : _lyricssize = 516;
                     },
                   ),
                 ),
@@ -363,8 +412,11 @@ class _SongPageState extends State<SongPage> {
                   onPressed: () => setState(
                     () {
                       _showFilterSettings = false;
-                      _showAutoScrolling = !_showFilterSettings;
+                      _showAutoScrolling = !_showAutoScrolling;
                       _showTextSize = false;
+                      _showAutoScrolling == true
+                          ? _lyricssize = 516 - 56
+                          : _lyricssize = 516;
                     },
                   ),
                 ),
