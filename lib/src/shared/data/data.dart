@@ -196,56 +196,56 @@ final List<SingerModel> singers = [
   SingerModel(
     name: 'Aloe Blacc',
     imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+        'https://i.scdn.co/image/ab6761610000e5eb560df03f8fee7731d18a9488',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //2
   SingerModel(
     name: 'Agnes',
     imageUrl:
-        'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1331&q=80',
+        'https://i.scdn.co/image/ab6761610000f178c0927a09248d75b7cda51193',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //3
   SingerModel(
     name: 'Vargas & Lagola',
     imageUrl:
-        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+        'https://i.scdn.co/image/ab6761610000f1782bb6df086820026e38d81d65',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //4
   SingerModel(
     name: 'Joe Janiak',
     imageUrl:
-        'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80',
+        'https://i.scdn.co/image/ab6761610000e5eb7c5b77780fa7c2fb369e53ae',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //5
   SingerModel(
     name: 'Bonn',
     imageUrl:
-        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+        'https://i.scdn.co/image/ab6761610000f178cb3d42eeeb3e881eb302ddf6',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //6
   SingerModel(
     name: 'A R I Z O N A',
     imageUrl:
-        'https://images.unsplash.com/photo-1519631128182-433895475ffe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+        'https://i.scdn.co/image/ab6761610000e5eb8ec2cd2c426ae40191391487',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //7
   SingerModel(
     name: 'Imagine Dragons',
     imageUrl:
-        'https://images.unsplash.com/photo-1515077678510-ce3bdf418862?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=675&q=80',
+        'https://i.scdn.co/image/ab6761610000e5eb920dc1f617550de8388f368e',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
   //8
   SingerModel(
     name: 'Noonie Bao',
     imageUrl:
-        'https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=592&q=80',
+        'https://i.scdn.co/image/81ca801d43a7125c9146fc8c938bab93585aa50f',
     info: InfoModel.singer(data: "3.9M", data1: "1.2k", data2: "96"),
   ),
 ];

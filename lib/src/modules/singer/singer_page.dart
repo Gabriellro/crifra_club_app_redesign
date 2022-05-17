@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
-
-import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
+import '../../shared/data/data.dart';
+import '../../shared/models/_export_models.dart';
+import '../../shared/theme/theme.dart';
+import '../../shared/widgets/_export_widgets.dart';
 
 class SingerPage extends StatefulWidget {
   static String routeName = "/SingerPage";
@@ -55,14 +53,12 @@ class _SingerPageState extends State<SingerPage> {
             pinned: true,
             snap: true,
             floating: true,
-            expandedHeight: 134.0 - 40,
             backgroundColor: Theme.of(context).backgroundColor,
             elevation: 0,
-            flexibleSpace: FlexibleSpaceBar(),
           ),
           SliverToBoxAdapter(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 36),
+              margin: EdgeInsets.symmetric(horizontal: 36, vertical: 20),
               child: Column(
                 children: [
                   Row(

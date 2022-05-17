@@ -1,8 +1,8 @@
-import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
+import '../../shared/data/data.dart';
+import '../../shared/theme/theme.dart';
+import '../../shared/widgets/_export_widgets.dart';
 
 class SearchPage extends StatelessWidget {
   static String routeName = "/SearchPage";

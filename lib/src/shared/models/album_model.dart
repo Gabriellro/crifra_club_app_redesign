@@ -1,5 +1,4 @@
 import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/singer_model.dart';
 
 class AlbumModel {
   final String name;

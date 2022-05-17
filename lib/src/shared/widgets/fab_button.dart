@@ -20,10 +20,10 @@ class FabButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        shape: StadiumBorder(),
-        side: BorderSide(width: 2, color: AppColors.primary),
-        backgroundColor: backgroundColor,
-      ),
+          shape: StadiumBorder(),
+          side: BorderSide(width: 2, color: AppColors.primary),
+          backgroundColor: backgroundColor,
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20)),
       onPressed: onTap,
       child: Row(
         children: [

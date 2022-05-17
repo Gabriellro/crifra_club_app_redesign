@@ -12,6 +12,6 @@ final Map<String, WidgetBuilder> routes = {
   SettingsPage.routeName: (context) => SettingsPage(
       setSettingsModelsgeneral: setSettingsModelsGeneral,
       setSettingsModelscipher: setSettingsModelscipher),
-  SongPage.routeName: (context) => SongPage(songModel: songModels),
+  SongPage.routeName: (context) => SongPage(),
   SearchPage.routeName: (context) => SearchPage(),
 };

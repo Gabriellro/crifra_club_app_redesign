@@ -31,9 +31,7 @@ class SingerList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SingerPicWidget.large(
-                      pic: singerModel.imageUrl,
-                    ),
+                    SingerPicWidget.large(pic: singerModel.imageUrl),
                     SizedBox(height: 5),
                     Container(
                       width: 100,

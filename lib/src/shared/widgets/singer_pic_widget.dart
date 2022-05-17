@@ -51,6 +51,14 @@ class SingerPicWidget extends StatelessWidget {
             bottomLeft: Radius.circular(24),
             bottomRight: Radius.circular(100),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 16,
+              offset: Offset(0, 6),
+            ),
+          ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
@@ -78,6 +86,14 @@ class SingerPicWidget extends StatelessWidget {
             bottomLeft: Radius.circular(24),
             bottomRight: Radius.circular(100),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 16,
+              offset: Offset(0, 6),
+            ),
+          ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:crifra_club_app_redesign/src/shared/auth/auth_controller.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/app_images.dart';
+
+import '../../shared/auth/auth_controller.dart';
+import '../../shared/theme/theme.dart';
 
 class SplashPage extends StatelessWidget {
   static String routeName = "/";

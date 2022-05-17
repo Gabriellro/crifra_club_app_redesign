@@ -1,12 +1,10 @@
-import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
-import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
-
-import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
+import '../../shared/data/data.dart';
+import '../../shared/models/_export_models.dart';
+import '../../shared/theme/theme.dart';
+import '../../shared/widgets/_export_widgets.dart';
+import '../_export_modules.dart';
 
 class ProfilePage extends StatefulWidget {
   static String routeName = "/ProfilePage";
@@ -57,13 +55,11 @@ class _ProfilePageState extends State<ProfilePage> {
             pinned: true,
             snap: true,
             floating: true,
-            expandedHeight: 134.0 - 40,
             backgroundColor: Theme.of(context).backgroundColor,
             elevation: 0,
-            flexibleSpace: FlexibleSpaceBar(),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 36.0),
+            padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 30),
             sliver: SliverToBoxAdapter(
               child: Container(
                 child: Column(

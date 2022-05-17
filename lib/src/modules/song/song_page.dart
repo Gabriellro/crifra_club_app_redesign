@@ -1,18 +1,16 @@
-import 'package:crifra_club_app_redesign/src/shared/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/data/data.dart';
 
-import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
-import 'package:crifra_club_app_redesign/src/shared/widgets/_export_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../shared/data/data.dart';
+import '../../shared/models/_export_models.dart';
+import '../../shared/theme/theme.dart';
+import '../../shared/widgets/_export_widgets.dart';
 
 class SongPage extends StatefulWidget {
   static String routeName = "/SongPage";
 
-  final List<SongModel> songModel;
-
-  const SongPage({Key? key, required this.songModel}) : super(key: key);
+  const SongPage({Key? key}) : super(key: key);
 
   @override
   State<SongPage> createState() => _SongPageState();
@@ -22,13 +20,14 @@ class _SongPageState extends State<SongPage> {
   bool _showFilterSettings = false;
   bool _showTextSize = false;
   bool _showAutoScrolling = false;
-  bool _showTypeCipher = true;
-  double _lyricssize = 516.0;
+  double _lyricssize = 594.0;
 
   RangeValues _rangeSliderDiscreteValues = const RangeValues(0, 0);
 
   @override
   Widget build(BuildContext context) {
+    final songModel = ModalRoute.of(context)!.settings.arguments as SongModel;
+
     final _autoScrolling = Visibility(
       visible: _showAutoScrolling,
       child: SizedBox(
@@ -36,13 +35,16 @@ class _SongPageState extends State<SongPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SvgPicture.asset(
-              AppImages.icTurtle,
-              color: _rangeSliderDiscreteValues.start == -2
-                  ? Theme.of(context).primaryColor
-                  : _rangeSliderDiscreteValues.start == -1
-                      ? Theme.of(context).primaryColor.withOpacity(0.5)
-                      : Theme.of(context).iconTheme.color!.withOpacity(0.2),
+            Expanded(
+              flex: 1,
+              child: SvgPicture.asset(
+                AppImages.icTurtle,
+                color: _rangeSliderDiscreteValues.start == -2
+                    ? Theme.of(context).primaryColor
+                    : _rangeSliderDiscreteValues.start == -1
+                        ? Theme.of(context).primaryColor.withOpacity(0.5)
+                        : Theme.of(context).iconTheme.color!.withOpacity(0.2),
+              ),
             ),
             RangeSlider(
               activeColor: Theme.of(context).primaryColor,
@@ -59,16 +61,20 @@ class _SongPageState extends State<SongPage> {
                 });
               },
             ),
-            SvgPicture.asset(
-              AppImages.icRabbit,
-              color: _rangeSliderDiscreteValues.end == 2
-                  ? Theme.of(context).primaryColor
-                  : _rangeSliderDiscreteValues.end == 1
-                      ? Theme.of(context).primaryColor.withOpacity(0.5)
-                      : Theme.of(context).iconTheme.color!.withOpacity(0.2),
+            Expanded(
+              flex: 1,
+              child: SvgPicture.asset(
+                AppImages.icRabbit,
+                color: _rangeSliderDiscreteValues.end == 2
+                    ? Theme.of(context).primaryColor
+                    : _rangeSliderDiscreteValues.end == 1
+                        ? Theme.of(context).primaryColor.withOpacity(0.5)
+                        : Theme.of(context).iconTheme.color!.withOpacity(0.2),
+              ),
             ),
             IconButton(
               onPressed: () {},
+              padding: EdgeInsets.zero,
               icon: Icon(
                 Icons.play_arrow_rounded,
                 color: Theme.of(context).iconTheme.color,
@@ -167,7 +173,6 @@ class _SongPageState extends State<SongPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: 86,
         backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -176,18 +181,53 @@ class _SongPageState extends State<SongPage> {
             color: AppColors.primary,
           ),
         ),
-        title: Text(
-          widget.songModel.first.name,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        flexibleSpace: FlexibleSpaceBar(
-          title: Text(
-            widget.songModel.first.author.name,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(color: AppColors.primary),
-          ),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16),
+            Text(
+              songModel.name,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(height: 1),
+            Row(
+              children: [
+                Visibility(
+                  visible: songModel.isExplicit == null ? false : true,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.explicit_rounded,
+                        size: 18,
+                        color: Theme.of(context).errorColor,
+                      ),
+                      SizedBox(width: 5),
+                    ],
+                  ),
+                ),
+                Text(
+                  "${songModel.author.name}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      ?.copyWith(color: Theme.of(context).primaryColor),
+                ),
+                Text(
+                  ', ',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                Text(
+                  "${songModel.feat.name}",
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      ?.copyWith(color: Theme.of(context).primaryColor),
+                ),
+              ],
+            ),
+          ],
         ),
         actions: [
           IconButton(
@@ -203,8 +243,8 @@ class _SongPageState extends State<SongPage> {
                 _showAutoScrolling = false;
                 _showTextSize = false;
                 _showFilterSettings == true
-                    ? _lyricssize = 516 - 470
-                    : _lyricssize = 516;
+                    ? _lyricssize = 594 - 470
+                    : _lyricssize = 594;
               },
             ),
           ),
@@ -240,35 +280,6 @@ class _SongPageState extends State<SongPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _filterSettings,
-          Visibility(
-            visible: _showTypeCipher,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ChoiceChip(
-                    label: Text('Principal'),
-                    labelStyle: Theme.of(context).textTheme.bodyText1,
-                    selected: true,
-                    selectedColor: Theme.of(context).primaryColor,
-                    disabledColor: Theme.of(context).cardColor,
-                  ),
-                  ChoiceChip(
-                    label: Text('Simplificada'),
-                    selected: false,
-                    disabledColor: Theme.of(context).cardColor,
-                  ),
-                  ActionChip(
-                    avatar: Icon(Icons.keyboard_arrow_down_rounded),
-                    label: Text('mais'),
-                    onPressed: () {},
-                    backgroundColor: Theme.of(context).cardColor,
-                  ),
-                ],
-              ),
-            ),
-          ),
           SizedBox(height: 10),
           Container(
             width: double.infinity,
@@ -289,50 +300,420 @@ class _SongPageState extends State<SongPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Tom: Bm (forma dos acordes no tom de Am)\n",
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Tom: ',
+                          ),
+                          TextSpan(
+                            text: 'Em',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '\nEm                          D    C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nCan you hear me? S.O.S',
+                          ),
+                          TextSpan(
+                            text: '\nC                         D            Em',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nHelp me put my mind to rest',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nEm                                      D         C ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nTwo times clear again I\'m acting low',
+                          ),
+                          TextSpan(
+                            text:
+                                '\n   C                                  D          Em ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nA pound of weed and a bag of blow',
+                          ),
+                          TextSpan(
+                            text:
+                                '\n\nEm                    G      D                           C ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nI can feel your love pulling me up from the underground',
+                          ),
+                          TextSpan(
+                            text: '\nEm                      G',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI don\'t need my drugs',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nD                                                              C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nWe could be more than just part-time lovers',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nEm                    G      D                           C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nI can feel your touch picking me up from the underground',
+                          ),
+                          TextSpan(
+                            text: '\nEm                      G',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI don\'t need my drugs',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nD                                                              C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nWe could be more than just part-time lovers',
+                          ),
+                        ],
+                      ),
                     ),
                     Text(
-                      "Capotraste na 2ª casa\n",
+                      "\n[Refrão]",
                     ),
-                    Text(
-                      "[Intro] Am  F/C  C/G  G\n            Am  F/C  C/G  Em7\n",
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n\nEm  G  C                                                              D ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n            We could be more than just part-time lovers',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          TextSpan(
+                            text: '\n\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n\nEm  G  C                                                              D ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n            We could be more than just part-time lovers',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          TextSpan(
+                            text: '\n\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\n\nEm                     D        C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI get robbed of all my sleep',
+                          ),
+                          TextSpan(
+                            text: '\nC                             D        Em',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nAs my thoughts begin to leave',
+                          ),
+                          TextSpan(
+                            text: '\nEm                D                 C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI let go but I don\'t know how',
+                          ),
+                          TextSpan(
+                            text:
+                                '\n            C                              D              Em',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nYeah I don\'t know how but I need to now',
+                          ),
+                          TextSpan(
+                            text: '\n\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "[Primeira Parte]\n",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text:
+                                '\nEm                    G      D                           C ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nI can feel your love pulling me up from the underground',
+                          ),
+                          TextSpan(
+                            text: '\nEm                      G',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI don\'t need my drugs',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nD                                                              C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nWe could be more than just part-time lovers',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nEm                    G      D                           C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nI can feel your touch picking me up from the underground',
+                          ),
+                          TextSpan(
+                            text: '\nEm                      G',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nI don\'t need my drugs',
+                          ),
+                          TextSpan(
+                            text:
+                                '\nD                                                              C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\nWe could be more than just part-time lovers',
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "Am            F/C             C/G\nFeeling my way through the darkness\nAm        F/C          C/G\n  Guided by a beating heart\nAm         F/C            C/G\n  I can't tell where the journey will end\nAm        F/C           C/G\n  But I know where it start\nAm             F/C      C/G\n  They tell me I'm too young to understand\nAm              F/C             C/G\n  They say I'm caught up in a dream\nAm                F/C          \n  Well life will pass me by \n   C/G\nIf I don't open up my eyes\nAm             F/C     C/G\n  Well that's fine by me\n",
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text:
+                                '\n\nEm  G  C                                                              D ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n            We could be more than just part-time lovers',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          TextSpan(
+                            text: '\n\n( Em  G  C  D )',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n\nEm  G  C                                                              D ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text:
+                                '\n            We could be more than just part-time lovers',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "[Refrão]\n",
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    Text(
-                      "\n           Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  \n  Didn't know I was lost\n    Em7    Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  Em7\n  Didn't know I was lost\n",
-                    ),
-                    Text(
-                      "[Solo]\n",
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    Text(
-                      "Am  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\nAm  F/C  C/G  G\nAm  F/C  C/G  Em7\n",
-                    ),
-                    Text(
-                      "(Repetições)\n",
-                    ),
-                    Text(
-                      "Am         F/C          C/G\n  I tried carrying the weight of the world\nAm      F/C         C/G\n  But I only have two hands\nAm        F/C                C/G\n  Hope I get the chance to travel the world\nAm             F/C       C/G\n  But I don't have any plans\nAm            F/C             C/G\n  I wish that I could stay forever this young\nAm       F/C           C/G\n  Not afraid to close my eyes\nAm          F/C          C/G\n  Life's a game made for everyone\nAm     F/C             C/G\n  And love is the prize\n",
-                    ),
-                    Text(
-                      "[Refrão]\n",
-                    ),
-                    Text(
-                      "           Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  \n  Didn't know I was lost\n    Em7    Am      F/C      C/G\nSo wake me up when it's all over\n  G       Am   F/C     C/G\nWhen I'm wiser and I'm older\nEm7       Am         F/C       C/G        G\nAll this time I was finding myself, and I\nAm        F/C        C/G  Em7\n  Didn't know I was lost\nAm           F/C       C/G  G\n  I didn't know I was lost\nAm           F/C       C/G  Em7\n  I didn't know I was lost\nAm           F/C       C/G   G\n  I didn't know I was lost\nAm           F/C  C/G  Em7\n  I didn't know\n",
-                    ),
-                    Text(
-                      "[Solo] Am  F/C  C/G  G\n           Am  F/C  C/G  Em\n           Am  F/C  C/G  G\n           Am  F/C  C/G  Em7  Am",
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '\nEm                          D    C',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nCan you hear me? S.O.S',
+                          ),
+                          TextSpan(
+                            text: '\nC                         D            Em',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context).primaryColor),
+                          ),
+                          TextSpan(
+                            text: '\nHelp me put my mind to rest',
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -389,8 +770,8 @@ class _SongPageState extends State<SongPage> {
                       _showAutoScrolling = false;
                       _showTextSize = !_showTextSize;
                       _showTextSize == true
-                          ? _lyricssize = 516 - 56
-                          : _lyricssize = 516;
+                          ? _lyricssize = 594 - 56
+                          : _lyricssize = 594;
                     },
                   ),
                 ),
@@ -415,8 +796,8 @@ class _SongPageState extends State<SongPage> {
                       _showAutoScrolling = !_showAutoScrolling;
                       _showTextSize = false;
                       _showAutoScrolling == true
-                          ? _lyricssize = 516 - 56
-                          : _lyricssize = 516;
+                          ? _lyricssize = 594 - 56
+                          : _lyricssize = 594;
                     },
                   ),
                 ),

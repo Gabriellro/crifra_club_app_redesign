@@ -64,13 +64,11 @@ class _AlbumPageState extends State<AlbumPage> {
             pinned: true,
             snap: true,
             floating: true,
-            expandedHeight: 134.0 - 40,
             backgroundColor: Theme.of(context).backgroundColor,
             elevation: 0,
-            flexibleSpace: FlexibleSpaceBar(),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 36.0),
+            padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 30),
             sliver: SliverToBoxAdapter(
               child: SetAlbumWidget(albumModel: albumModel),
             ),
@@ -87,9 +85,9 @@ class _AlbumPageState extends State<AlbumPage> {
                       borderRadius: BorderRadius.circular(24),
                     ),
                     width: double.infinity,
-                    height: 600,
+                    height: 800,
+                    child: SongListWidget(songModels: songModels),
                   ),
-                  SongListWidget(songModels: songModels),
                   Positioned(
                     top: -20,
                     right: 36,

@@ -54,7 +54,6 @@ TextTheme customTextThemeLight() {
       fontSize: 14,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.25,
-      color: LightColors.textLigth.withOpacity(0.3),
     ),
     button: GoogleFonts.quicksand(
       fontSize: 14,

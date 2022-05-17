@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:crifra_club_app_redesign/src/modules/_export_modules.dart';
-import 'package:crifra_club_app_redesign/src/shared/theme/theme.dart';
-import 'package:crifra_club_app_redesign/src/shared/models/user_model.dart';
-
-import 'package:crifra_club_app_redesign/src/modules/explore/explore_page.dart';
+import '../../shared/models/_export_models.dart';
+import '../../shared/theme/theme.dart';
+import '../_export_modules.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
