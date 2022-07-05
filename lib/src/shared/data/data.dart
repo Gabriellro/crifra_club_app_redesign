@@ -4,7 +4,7 @@ import 'package:crifra_club_app_redesign/src/shared/models/_export_models.dart';
 
 final List<SongModel> songModels = [
   SongModel(
-    name: "Peace Of Mind ",
+    name: "Peace Of Mind",
     author: singers[0],
     feat: singers[3],
   ),
@@ -12,6 +12,7 @@ final List<SongModel> songModels = [
     name: "Heaven",
     feat: singers[3],
     author: singers[0],
+    isVideoLessons: true,
   ),
   SongModel(
     name: "SOS",
@@ -19,34 +20,34 @@ final List<SongModel> songModels = [
     feat: singers[3],
   ),
   SongModel(
-    name: "Tough Love ",
+    name: "Tough Love",
     author: singers[0],
     feat: singers[3],
   ),
   SongModel(
-    name: "Bad Reputation ",
+    name: "Bad Reputation",
     feat: singers[4],
     author: singers[0],
   ),
   SongModel(
-    name: "Ain't a Thing ",
+    name: "Ain't a Thing",
     author: singers[0],
     feat: singers[5],
     isExplicit: true,
   ),
   SongModel(
-    name: 'Hold The Line ',
+    name: "Hold The Line",
     author: singers[0],
     feat: singers[6],
   ),
   SongModel(
-    name: "Freak ",
+    name: "Freak",
     author: singers[0],
     feat: singers[5],
     isExplicit: true,
   ),
   SongModel(
-    name: "Excuse Me Mr. Sir ",
+    name: "Excuse Me Mr. Sir",
     author: singers[0],
     feat: singers[3],
     isExplicit: true,
@@ -57,12 +58,12 @@ final List<SongModel> songModels = [
     feat: singers[7],
   ),
   SongModel(
-    name: "Never Leave Me ",
+    name: "Never Leave Me",
     author: singers[0],
     feat: singers[4],
   ),
   SongModel(
-    name: "Fades Away ",
+    name: "Fades Away",
     author: singers[0],
     feat: singers[8],
   ),
