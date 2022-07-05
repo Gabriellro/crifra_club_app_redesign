@@ -18,8 +18,6 @@ dependencies:
   google_sign_in_web: ^0.10.0
   shared_preferences: ^2.0.6
   carousel_slider: ^4.0.0
-  cached_network_image:
-  expandable:
   video_player: ^2.2.19
 
 dev_dependencies:
@@ -32,4 +30,3 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
-    - assets/videos/
