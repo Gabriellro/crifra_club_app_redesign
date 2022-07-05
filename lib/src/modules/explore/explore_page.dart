@@ -16,12 +16,12 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   final controller = HomeController();
   final List<String> imgList = [
-    'https://i3.ytimg.com/vi/CKBSVGvKZrU/mqdefault.jpg',
-    'https://i3.ytimg.com/vi/4fI401pOqUI/mqdefault.jpg',
-    'https://i3.ytimg.com/vi/MTGW6KhYC1Q/mqdefault.jpg',
-    'https://i3.ytimg.com/vi/3cSvyIGrZaM/mqdefault.jpg',
-    'https://i3.ytimg.com/vi/73w6dKEB3Ac/mqdefault.jpg',
-    'https://i3.ytimg.com/vi/BKQomUeKTEY/mqdefault.jpg'
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg',
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg',
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg',
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg',
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg',
+    'https://studiosol-a.akamaihd.net/gcs/cifraclub/destaques/a/9/7/e/796b7a51652375366_x2_small.jpeg'
   ];
   @override
   Widget build(BuildContext context) {
